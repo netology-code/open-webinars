@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
+
+  <head>
+    <title>Верстаем интерактивное слайд-ин меню</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../node_modules/shower-ribbon/styles/screen-4x3.css">
+    <link rel="stylesheet" href="../../common/css/prism.css">
+    <link rel="stylesheet" href="../../common/css/prism-fix.css">
+    <link rel="stylesheet" href="../../common/css/netology.css">
+    <link rel="stylesheet" href="../../common/css/fake-browser.css">
+    <link rel="shortcut icon" href="../../common/i/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="shower">
+    <header class="caption">
+      <h1>Верстаем интерактивное слайд-ин меню</h1>
+      <p>Татьяна Тен, Webcoalition</p>
+    </header>
+
+    <section class="slide" id="cover">
+      <h2>Верстаем интерактивное слайд-ин меню</h2>
+      <p>
+        <img src="../../common/pic/authors/tten.jpg" alt="" class="avatar">
+        Татьяна Тен <span class="position">Webcoalition</span>
+      </p>
+    </section>
+    <section class="slide author" id="author">
+      <img src="../../common/pic/authors/tten.jpg" alt="">
+      <h1>Татьяна Тен</h1>
+      <p class="position">frontend-разработчик в Webcoalition</p>
+      <ul class="contacts">
+        <li><a href="mailto:tt@webcoalition.ru"><i class="fa fa-envelope-o" aria-hidden="true"></i>tt@webcoalition.ru</a></li>
+        <li><a href="https://fb.me/tanya.ten10"><i class="fa fa-facebook" aria-hidden="true"></i>fb.me/tanya.ten10</a></li>
+      </ul>
+    </section>
+
+    <section class="slide chapter" id="programm">
+      <h2><a href="http://netology.ru/programs/html-verstka">HTML-верстка: с нуля до первого макета</a></h2>
+      <h3>17 февраля</h3>
+      <style>
+        #programm {
+          background: url(pic/cover.svg) no-repeat center bottom / contain;
+          background-color: #5a5a91;
+        }
+
+        #programm * {
+          color: #fff;
+          font-weight: 900;
+          text-align: center;
+        }
+
+        #programm a {
+          background: none;
+        }
+
+        #programm h2:before {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        #programm h3 {
+          font-size: 64px;
+          color: #f3f3f3;
+        }
+
+      </style>
+    </section>
+
+    <section class="slide" id="roadmap">
+      <h2>План занятия</h2>
+      <ol>
+        <li>Глоссарий терминов</li>
+        <li>Введение</li>
+        <li>HTML-разметка</li>
+        <li>CSS-стили
+          <ul>
+            <li>Основные стили</li>
+            <li>Стили для блоков</li>
+            <li>Волшебная кнопка</li>
+            <li>Наводим лоск</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <section class="slide chapter">
+      <h2>Глоссарий терминов</h2>
+    </section>
+    <section class="slide">
+      <figure class="blockquote">
+        <img src="./pic/code.jpg" alt="">
+        <blockquote>
+          <p><strong>HyperText Markup Language</strong> — «язык гипертекстовой разметки».</p>
+          <p>Cтандартизированный язык разметки документов во Всемирной паутине.</p>
+        </blockquote>
+        <figcaption>Википедия</figcaption>
+      </figure>
+    </section>
+    <section class="slide">
+      <h2>Тег - элемент html</h2>
+      <ul>
+        <li>Теги в HTML заключены в угловые скобки <code>&lt;</code> и <code>&gt;</code>.</li>
+        <li>Нам привычнее их называть символами меньше и больше.</li>
+        <li>Между угловыми скобками записывается название тега.</li>
+      </ul>
+      <script type="text/plain" class="language-markup language-html line-numbers">
+        Рагу из морского черта
+        <p>
+          Морской черт — чертовски коварная рыбина, за что европейский удильщик и получил свое второе ­название. Ее также называют «лобстером для бедных» — за плотное мясо, по структуре действительно напоминающее лобстера. Зато в нем нет костей, кроме огромного хребта, поэтому при разделке нужно только снять кожу и разрезать рыбу вдоль на два филе.
+        </p>
+        <p>
+          Подавать это рагу, как и все остальные, нужно в глубоких тарелках, в каких обычно подают пасту.
+        </p>
+      </script>
+    </section>
+
+    <section class="slide">
+      <h2>Так рецепт выглядит в браузере</h2>
+      <div class="fake-browser-ui">
+        <div class="frame"><span></span><span></span><span></span></div>
+        <div class="body">
+          Рагу из морского черта
+          Морской черт — чертовски коварная рыбина, за что европейский удильщик и получил свое второе ­название. Ее также называют «лобстером для бедных» — за плотное мясо, по структуре действительно напоминающее лобстера. Зато в нем нет костей, кроме огромного хребта, поэтому при разделке нужно только снять кожу и разрезать рыбу вдоль на два филе.
+          Подавать это рагу, как и все остальные, нужно в глубоких тарелках, в каких обычно подают пасту.
+        </div>
+      </div>
+
+    </section>
+
+    <section class="slide">
+      <h2>Дополнительная информация</h2>
+      <p>Чтобы сообщить браузеру дополнительную информацию о содержимом тегов или задать специальные свойства используются атрибуты.</p>
+      <ul>
+        <li>Атрибуты задаются в открывающем теги.</li>
+        <li>Значение атрибута задается в двойных кавычках <code>"</code>.</li>
+        <li>Значение записывается после символа <code>=</code></li>
+        <li>Атрибутов может быть несколько, тогда они перечисляются через пробел.</li>
+      </ul>
+      <script type="text/plain" class="language-markup language-html line-numbers">
+        <blockquote class="main" cite="А.С. Пушкин">
+          Мой дядя самых честных правил, Когда не в шутку занемог, Он уважать себя заставил. И лучше выдумать не мог.
+        </blockquote>
+      </script>
+    </section>
+    <section class="slide">
+      <h2>Универсальные атрибуты</h2>
+      <p>Можно указать в любом теге:</p>
+      <ul>
+        <li><code>id</code> — позволяет задать тегу универсальный идентификатор, чтобы в дальнейшем ссылаться на него.</li>
+        <li><code>class</code> — позволяет задать один или несколько через пробел определенных пользователем классов для дальнейшего управления внешним видом элемента через стили.</li>
+      </ul>
+      <p>У некоторых тегов могут быть особенные атрибуты, например у input (поле ввода) есть атрибут type, с помощью которого поле ввода может превращаться в чекбокс.</p>
+    </section>
+    <section class="slide">
+      <h2>Вложенность тегов</h2>
+      <p>Теги могут быть вовлечены в различные отношения: например, если теги вложены в один и тот же тег и идут друг за другом, то такие теги называются соседями.</p>
+      <p>При этом соседи которые следую раньше — предшественники. А позже — последователи. Ближайший предшественник — предыдущий тег. Ближайший последователь — следующий.</p>
+      <img src="./pic/tag-family.jpg" style="display: block; margin:0 auto;">
+    </section>
+    <section class="slide">
+      <figure class="blockquote">
+        <img src="./pic/code.jpg" alt="">
+        <blockquote>
+          <p><strong>CSS</strong> — Cascading Style Sheets — каскадные таблицы стилей.</p>
+          <p>это язык, содержащий набор информации, отвечающий за то, как именно будет отображаться страница сайта визуально: используя css, мы можем запрограммировать внешний вид страницы: оформление и расположение блоков и элементов. СSS поддерживается абсолютно всеми браузерами, и благодаря свой простоте, де-факто HTML+CSS стали стандартом для построения веб-интерфейсов.</p>
+        </blockquote>
+      </figure>
+    </section>
+
+    <section class="slide">
+      <h2>CSS-правило</h2>
+    <pre>
+      <code class="language-css  line-numbers">
+        p {
+          color: red;
+        }
+      </code>
+    </pre>
+      <p>В терминах CSS это - правило</p>
+      <p>Его составные части:</p>
+      <ul>
+        <li>селектор(<code>p</code>) - указание к  каким тегам применяются указанные в правиле стили</li>
+        <li>пары "свойство : значение" разделенных двоеточием и обязательно заканчивающихся точкой с запятой. Обязательно заключаются в фигурные скобки.</li>
+      </ul>
+    </section>
+    <section class="slide">
+      <h2>Что может быть селектором?</h2>
+      <ul>
+        <li>Название тега, например: <code>div</code>, <code>p</code>, <code>h1</code>, <code>h2</code> и т.д.</li>
+        <li>атрибут тега(класс)</li>
+        <li>несколько тегов, несколько классов или же их сочетание и не только.</li>
+      </ul>
+    </section>
+    <section class="slide">
+      <h2>Селектор класса</h2>
+      <p>Чтобы обращаться к тегу по имени класса, нужно записать это имя с точкой перед началом:</p>
+    <pre>
+      <code class="language-css  line-numbers">
+        .имя-класса {
+        свойство : значение;
+        }
+      </code>
+      <p>Пример:</p>
+      <script type="text/plain" class="lang-markup  language-html  line-numbers">
+        <h2 class="main-header">Заголовок 1</h2>
+      </script>
+      <code class="language-css  line-numbers">
+        .main-header {
+        font-size: 50px;
+        }
+      </code>
+    </pre>
+    </section>
+    <section class="slide">
+      <h2>Селектор класса</h2>
+      <p>(важно: имя класса в css стилях должно в точности совпадать с именем атрибута класса, записаного в разметке, например <br>
+        <script type="text/plain" class="lang-markup  language-html  line-numbers">
+            <h2 class=”main-head”>Заголовок</h2>
+        </script>
+        и .main-header не будут совпадать, наше правило не сработает).
+      </p>
+    </section>
+    <section class="slide">
+      <h2>Какие свойства можно задавать с помощью css правила?</h2>
+      <p>Все, что относится к внешнему виду, положению и представлению на экране(ширина, высота, позиция, способ расположения по отношению к соседним тегам, цвет, фон и многое другое).</p>
+    </section>
+
+    <section class="slide chapter">
+      <h2>Введение</h2>
+    </section>
+
+    <section class="slide">
+      <h2>«Бургер-меню»</h2>
+      <p>С распространением мобильных устройств в верстке появился новый прием – меню стали прятать за иконкой «бургера» <img src="pic/burger-icon.png" alt="" style="vertical-align:middle"></p>
+      <p>Со временем этот паттерн перекочевал и в десктопные версии сайтов.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Пример «бургера»</h2>
+      <!-- Раскомментировать ссылки для создания PDF-версии презентации -->
+      <!-- <p>Посмотреть примеры «бургер-меню»:</p> -->
+      <!-- <ul>
+        <li><a href="https://dribbble.com/shots/2158520-Burger-and-Icons">Меню с иконками</a></li>
+        <li><a href="https://dribbble.com/shots/2030468-Burger-Menu-UX">Скользящее меню</a></li>
+        <li><a href="https://dribbble.com/shots/3285613-Burger-Menu">Плавное увеличение меню</a></li>
+        <li><a href="https://dribbble.com/shots/2232033-Burger-menu-animation-case">Меню «за кулисами»</a></li>
+      </ul> -->
+      <img src="pic/burger_menu-1.gif" alt="">
+    </section>
+
+    <section class="slide">
+      <h2>Пример «бургера»</h2>
+      <img src="pic/burger_menu-2.gif" alt="">
+    </section>
+
+    <section class="slide">
+      <h2>Пример «бургера»</h2>
+      <img src="pic/burger_menu-3.gif" alt="">
+    </section>
+
+    <section class="slide">
+      <h2>Пример «бургера»</h2>
+      <img src="pic/burger_menu-4.gif" alt="">
+    </section>
+
+    <section class="slide">
+      <h2>Реализация</h2>
+      <p>Многие начинающие верстальщики отказываются от выезжающего меню, поскольку думают, что для реализации требуется знание JavaScript.</p>
+      <p>Но это не так! Сегодня мы научимся верстать «бургер-меню» на чистом HTML и CSS.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Финальный результат</h2>
+      <div class="fake-browser-ui" style="margin-bottom:1em;width:100%">
+        <div class="frame">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <body>
+          <a href="https://netology-code.github.io/slide-in-menu/">
+            <img src="pic/slide-in-menu.gif" alt="" style="width:100%;">
+          </a>
+        </body>
+      </div>
+    </section>
+    <section class="slide">
+      <h2>Рабочая среда</h2>
+      <ol>
+        <li>Текстовый редактор</li>
+        <li>Браузер</li>
+        <li>Идея или макет</li>
+      </ol>
+    </section>
+
+    <section class="slide">
+      <h2>Текстовые редакторы</h2>
+      <ul>
+        <li>Блокнот</li>
+        <li><a href="https://notepad-plus-plus.org/download/v7.3.html">Notepad++</a></li>
+        <li><a href="https://www.sublimetext.com/download">Sublime Text</a></li>
+        <li><a href="https://atom.io/">Atom</a></li>
+        <li><a href="http://brackets.io/">Brackets</a></li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Браузеры</h2>
+      <ul>
+        <li>На основе Chrome (<a href="https://www.google.com/chrome/browser/desktop/">Google Chrome</a>, <a href="http://www.opera.com/computer">Opera</a>)</li>
+        <li><a href="https://www.mozilla.org/ru/firefox/new/#">FireFox</a></li>
+        <li><a href="https://www.microsoft.com/ru-ru/download/internet-explorer.aspx">Internet Explorer</a> (<a href="https://www.microsoft.com/ru-ru/windows/microsoft-edge">Edge</a>)</li>
+        <li><a href="http://www.apple.com/ru/safari/">Safari</a></li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Вспомогательные инструменты</h2>
+      <ul>
+        <li>Проверяем поддержку свойств <a href="http://caniuse.com">Can I Use</a></li>
+        <li>Справочник по HTML и CSS на русском <a href="http://webref.ru">WebRef</a></li>
+        <li>Онлайн-редактор <a href="http://codepen.io">Code Pen</a></li>
+      </ul>
+    </section>
+
+    <section class="slide chapter">
+      <h2>Создаем HTML-разметку</h2>
+    </section>
+    <section class="slide">
+      <h2>Готовимся к работе</h2>
+      <p>Открываем онлайн редактор <a href="http://codepen.io">Code Pen</a> и нажимаем кнопку <b>New pen</b> в верхней части страницы.</p>
+      <br>
+      <img src="pic/codepen-0.png" alt="" style="max-width: 100%;">
+    </section>
+
+    <section class="slide">
+      <h2>Рабочие области</h2>
+      <p>Слева, в окне с названием HTML мы будем писать нашу разметку. В окне с названием CSS мы будем писать стили.</p>
+      <p>Результат будет виден сразу в нижней части страницы.</p>
+      <br>
+      <img src="pic/codepen-1.png" alt="" style="max-width: 100%;">
+    </section>
+
+    <section class="slide">
+      <h2>Сохраняем результат</h2>
+      <p>После очередных изменений не забывайте нажимать кнопку <b>Save</b>.</p>
+      <br>
+      <p style="text-align: center;"><img src="pic/codepen-2.png" alt="" style="max-width: 100%;"></p>
+    </section>
+
+    <section class="slide">
+      <h2>Особенности работы с Code Pen</h2>
+      <p>В онлайн-редакторе, с которым мы работаем сегодня, не нужно писать обязательные для HTML-страницы теги <code>&lt;!DOCTYPE html></code>, <code>&lt;html></code> и <code>&lt;head></code>.</p>
+      <p>Мы можем сразу начать писать разметку, которая должна быть расположена внутри тега <code>&lt;body></code>.</p>
+      <p class="note">Если вы работаете в обычном редакторе, то не забудьте про обязательную разметку HTML-страницы.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Родительский контейнер</h2>
+      <p>Начнем с того, что создадим родительский блок, внутри которого будет располагаться вся наша страница.</p>
+      <p>Сделаем это при помощи обычного <code>&lt;div></code> и зададим этому тегу класс <code>wrapper</code>.</p>
+      <br>
+      <pre>
+        <code class="language-html line-numbers">
+          &lt;div class="wrapper">
+
+          &lt;/div>
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Устаревший способ создания меню</h2>
+      <p>До появления тега <code>nav</code> меню на сайтах было принято использовать ненумерованный список (<code>ul</code>) и в каждый пункт меню (<code>li</code>) вкладывать ссылки (<code>a</code>).</p>
+      <p>Код получался перегруженным. Посмотрите на эту разметку:</p>
+      <pre>
+        <code class="language-html line-numbers">
+          &lt;div class="wrapper">
+            &lt;ul>
+              &lt;li>&lt;a href="">Главная&lt;/a>&lt;/li>
+              &lt;li>&lt;a href="">Статьи&lt;/a>&lt;/li>
+              &lt;li>&lt;a href="">Новости&lt;/a>&lt;/li>
+              &lt;li>&lt;a href="">Контакты&lt;/a>&lt;/li>
+            &lt;/ul>
+          &lt;/div>
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Создаем меню по-новому</h2>
+      <p>В спецификации HTML5 появился специальный тег <code>nav</code> при помощи которого мы можем создавать навигацию по нашему сайту. Меню как раз являетс навигацией.</p>
+      <p>Добавим в нашу разметку <code>nav</code> и вложим в него несколько ссылок для пунктов меню:</p>
+      <pre>
+        <code class="language-html line-numbers">
+          &lt;div class="wrapper">
+            &lt;nav>
+              &lt;a href="">Главная&lt;/a>
+              &lt;a href="">Статьи&lt;/a>
+              &lt;a href="">Новости&lt;/a>
+              &lt;a href="">Контакты&lt;/a>
+            &lt;/nav>
+          &lt;/div>
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2><code>main</code></h2>
+      <p>Весь контент нашей страницы будет расположен внутри тега <code>main</code>.</p>
+      <pre>
+        <code class="language-html line-numbers">
+          &lt;div class="wrapper">
+            &lt;nav>
+              &lt;a href="">Главная&lt;/a>
+              &lt;a href="">Статьи&lt;/a>
+              &lt;a href="">Новости&lt;/a>
+              &lt;a href="">Контакты&lt;/a>
+            &lt;/nav>
+            &lt;main>
+
+            &lt;/main>
+          &lt;/div>
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Контент</h2>
+      <p>Сейчас контент нам не особенно важен, поэтому мы просто добавим заголовок и абзац текста, используя для этого теги <code>h1</code> и <code>p</code>:</p>
+      <pre>
+        <code class="language-html line-numbers">
+          &lt;main>
+            &lt;h1>Контент&lt;/h1>
+            &lt;p>Некий текст.&lt;/p>
+          &lt;/main>
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Полная разметка</h2>
+      <p><a href="http://codepen.io/solarrust/pen/qRLMWJ?editors=1100">Посмотреть полную разметку на Code Pen</a></p>
+    </section>
+
+    <section class="slide chapter">
+      <h2>Пишем стили</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Начинаем писать стили</h2>
+      <p>Для начала зададим основные стили странице. Без них совсем никуда.</p>
+      <pre>
+        <code class="language-css line-numbers">
+          * {
+            box-sizing: border-box;
+          }
+
+          html, body {
+            height: 100%;
+            font-family: sans-serif;
+          }
+
+          body {
+            margin: 0;
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Основные стили</h2>
+      <p>В этих стилях мы «говорим», что все элементы на странице будут рассчитывать свои размеры исходя из алгоритма <code>border-box</code>.</p>
+      <p>Дальше мы задаем всей странице высоту в 100% экрана. Таким образом страница займет все видимое пространство по высоте.</p>
+      <p>На всей станице у нас будет использовать шрифт «без засечек». Для этого мы указываем в свойстве <code>font-family</code> значение <code>sans-serif</code>.</p>
+      <p>В последнем правиле мы сбрасываем стандартный отступ в 8px для элемента <code>body</code>.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Располагаем меню слева</h2>
+      <p>Перейдем к отдельным блокам нашей страницы. Расположим меню слева от контента. На то место, где он будет появляться после нажатия на «бургер». И зададим ему цветной фон, чтобы визуально отделить от основного контента:</p>
+      <pre>
+        <code class="language-css line-numbers">
+          nav {
+            background: #FFCC99;
+            padding: 20px;
+            width: 320px;
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Ссылки друг под другом</h2>
+      <p>Теперь расположим ссылки друг под другом и поменяем стили текста:</p>
+      <pre>
+        <code class="language-css line-numbers">
+          nav a {
+            display: block;
+            color: black;
+            text-decoration: none;
+            padding: 10px 0;
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Стили для контента</h2>
+      <p>Много времени контенту мы уделять не будем. Зададим отступы так, чтобы блоки не слипались между собой:</p>
+      <pre>
+        <code class="language-css line-numbers">
+          main {
+            padding: 20px;
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>«Приклеиваем» меню</h2>
+      <p>Чтобы меню было приклеено к левому краю страницы, укажем блоку <code>nav</code> <code>position: fixed</code>. Теперь положение меню вычисляется относительно экрана браузера. Укажем также координаты верхнего левого края <code>top: 0</code> и <code>left: 0</code>, не забудем указать <code>height: 100%</code> для того, чтобы меню занимало всю доступную высоту экрана по вертикали:</p>
+      <pre>
+        <code class="language-css line-numbers">
+          nav {
+            height: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Виды позиционирования</h2>
+      <p>В CSS у нас есть несколько значений для свойства <code>position</code>.</p>
+      <table style="font-size:80%;">
+        <tr>
+          <td><code>absolute</code></td>
+          <td style="padding: 10px;">Абсолютное позиционирование. Элемент исключается из потока документа и занимает позицию относительно окна браузера или относительно краев родителя с <br><code>position: relative</code>.</td>
+        </tr>
+        <tr>
+          <td><code>fixed</code></td>
+          <td style="padding: 10px;">Фиксированное позиционирование. Привязывается к координатам, указанным при помощи <code>left / right / top / bottom</code> и не меняет своего положения даже при прокрутке страницы.</td>
+        </tr>
+        <tr>
+          <td><code>relative</code></td>
+          <td style="padding: 10px;">Относительное позиционирование. Положение элемента отсчитывается от текущей позиции в потоке документа.</td>
+        </tr>
+        <tr>
+          <td><code>static</code></td>
+          <td style="padding: 10px;">Статичное позиционирование. Элемент не меняет своего положения. Значение по умолчанию. </td>
+        </tr>
+      </table>
+    </section>
+
+    <section class="slide">
+      <h2>Задаем координаты</h2>
+      <p>Поскольку элементы с любым значением свойства <code>position</code> кроме <code>static</code> исключаются из потока документа и не видят своей позиции, мы не можем управлять его положением при помощи обычных свойств. Для перемещения <i>спозиционированных</i> элементов используются свойства <code>left</code> (от левого края),
+      <code>right</code> (от правого края),
+      <code>top</code> (сверху),
+      <code>bottom</code> (снизу).</p>
+      <div class="fake-browser-ui position">
+        <style media="screen">
+          .fake-browser-ui.position .body {
+            height: 250px;
+          }
+          .positioned {
+            position: absolute;
+            width: 50%;
+            height: 150px;
+            background: red;
+            right: 15px;
+            bottom: -15px;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid black;
+            text-align: center;
+          }
+          .positioned-two {
+            position: static;
+            width: 50%;
+            height: 150px;
+            background: green;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid black;
+            text-align: center;
+          }
+        </style>
+        <div class="frame"><span></span><span></span><span></span></div>
+        <div class="body">
+          <div class="positioned">
+            У меня:<br>
+            position: absolute;<br>
+            right: 15px;<br>
+            bottom: -15px;
+          </div>
+          <div class="positioned-two">
+            У меня:<br>
+            position: static;<br>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>Исправляем ситуация с контентом</h2>
+      <p>Теперь поработаем над контентом: после манипуляций с нашим меню мы видим, что часть контента у нас невидима, так как попала под наше меню. Исправляем эту ситуацию так: зададим блоку <code>main</code> отступ слева, равный ширине нашего меню:</p>
+      <pre>
+        <code class="language-css line-numbers">
+          main {
+            margin-left: 320px;
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Промежуточный вариант</h2>
+      <p><a href="https://codepen.io/solarrust/pen/BpGvvm?editors=1100">Посмотреть промежуточный вариант в Code Pen</a></p>
+    </section>
+
+    <section class="slide chapter">
+      <h2 style="color:white">Волшебная кнопка</h2>
+      <img src="pic/magic.jpg" alt="" class="cover" style="filter:grayscale(50%) brightness(50%)">
+    </section>
+
+    <section class="slide">
+      <h2>Добавим элементы на страницу</h2>
+      <p>Теперь займемся кнопкой, которая будет управлять нашим меню. По клику на нее наше меню будет выезжать и уезжать обратно.</p>
+      <p>Добавим в нашу HTML-разметку новые элементы. Это обязательная составляющая магии.</p>
+      <p>Добавим чекбокс:</p>
+      <pre><code class="language-html">
+        &lt;input type="checkbox" id="navigation">
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2><code>label</code> для <code>input</code></h2>
+      <p>Теперь ниже добавим <code>label</code> и свяжем его с нашим чекбоксом при помощи атрибута <code>for</code> и имени идентификатора:</p>
+      <pre><code class="language-html">
+        &lt;input type="checkbox" id="navigation">
+        &lt;label for="navigation">&lt;/label>
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2>Стили для скрытого варианта меню</h2>
+      <p>Спрячем меню за пределы экрана где оно будет находится до тех пор, пока мы не нажмем на кнопку:</p>
+      <pre><code class="language-css line-numbers">
+        nav {
+          margin: 0 0 0 -320px;
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2>Фиксируем кнопку</h2>
+      <p>Для нашей будущей кнопки зададим стили так, чтобы она была видна всегда:</p>
+      <pre><code class="language-css line-numbers">
+        input {
+          position: fixed;
+          top: 5px;
+          left: 330px;
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2>Секретный ингредиент</h2>
+      <p>А теперь волшебное правило. При нажатом чекбоксе значение свойства <code>margin</code> у меню меняется на 0 и мы можем его видеть:</p>
+      <pre><code class="language-css line-numbers">
+        input:checked ~ nav{
+          margin: 0;
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2>Загадочный <code>:checked</code></h2>
+      <p>В последнем правиле мы использовали псевдокласс <code>:checked</code>. Он отвечает за состояние, когда чекбокс нажат. Псевдокласс помогает выбрать нам некий элемент по его состоянию. Еще одним, наверняка известным вам, псевдоклассом является <code>:hover</code> – состояние элемента при наведении курсора. Его мы тоже позже используем.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Не менее загадочный <code>~</code></h2>
+      <p>Помимо этого в нашем селекторе есть загадочный знак <code>~</code>. Он является частью составного селектора и ищет следующие теги, находящиеся после тега из первой части селектора - input:checked.</p>
+      <p>Таким образом наш селектор можно расшифровать так: «Выбираем элемент <code>nav</code>, который находится после "выбранного" чекбокса.»</p>
+    </section>
+
+    <section class="slide">
+      <h2>Пример работы чекбокса</h2>
+      <p><a href="https://codepen.io/solarrust/pen/ggQqjj?editors=1100">Посмотреть пример работы чекбокса на Code Pen</a></p>
+    </section>
+
+    <section class="slide">
+      <h2>Двигаем контент</h2>
+      <p>С меню мы разобрались, а вот контент никак не реагирует на скрытие/появление меню. Давайте добавим эту «реакцию».</p>
+      <p>Однако, можно заметить, что метод с <code>margin</code> для контента не подойдет – мы же не хотим, чтобы ширина контента менялась? Чтобы сдвигать контент и при этом сохранять его ширину неизменной (именно сдвигать, а не сужать) – мы воспользуемся css трансформацией:</p>
+      <pre><code class="language-css line-numbers">
+        input:checked ~ main {
+          transform: translate3d(320px, 0, 0);
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2>Трансформации в CSS</h2>
+      <p>Возможности современного CSS позволяют нам производить с элементами всяческие трансформации:</p>
+      <table>
+        <tr>
+          <td><code>translate</code></td>
+          <td>перемещает элемент вдоль трёх осей (х, у и z)</td>
+        </tr>
+        <tr>
+          <td><code>rotate</code></td>
+          <td>вращает элемент вокруг центральной точки</td>
+        </tr>
+        <tr>
+          <td><code>scale</code></td>
+          <td>изменяет размер элемента</td>
+        </tr>
+        <tr>
+          <td><code>skew</code></td>
+          <td>искажает элемент</td>
+        </tr>
+      </table>
+      <a href="https://webref.ru/course/css-advanced/transform">Подробнее о трансформациях</a>
+    </section>
+
+    <section class="slide">
+      <h2>Синхронизируем контент и кнопку</h2>
+      <p>Немного поменяем стили нашей кнопки и заставим ее двигаться вместе с меню:</p>
+      <pre><code class="language-css line-numbers">
+        input {
+          position: fixed;
+          top: 5px;
+          left: 10px;
+          z-index: 10;
+        }
+
+        input:checked{
+          left: 330px;
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2>Избавляемся от горизонтальной прокрутки</h2>
+      <p>Мы с каждым шагам все ближе к конечной верстке нашего выезжающего меню, но сейчас нам предстоит решить проблему с горизонтальным скроллом, который появляется при открытом меню.</p>
+      <p>Здесь нас выручит наш блок <code>.wrapper</code>: чтобы предотвратить появление горизонтальной прокрутки на странице, зададим этому блоку свойство <code>overflow: hidden</code>, это позволит нам «скрывать» все лишнее:</p>
+      <pre><code class="language-css line-numbers">
+        .wrapper {
+          overflow: hidden;
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2>Вся власть <code>label</code>!</h2>
+      <p>Сделаем чекбокс невидимым, передав всю власть элементу <code>label</code>:</p>
+      <pre><code class="language-css line-numbers">
+        input {
+          display: none;
+        }
+        label {
+          position: fixed;
+          top: 5px;
+          left: 10px;
+          z-index: 10;
+          width: 32px;
+          height: 32px;
+          padding: 5px 0;
+        }
+      </code></pre>
+      <p style="margin-top:-20px;">Мы связали наш чекбокс с ярлыком label при помощи идентификатора, и при клике на ярлык чекбокс будет менять свое состояние.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Делаем «бургер»</h2>
+      <p>Давайте сделаем кнопку более похожей на «бургер». На фон поместим иконку с «бургером»:</p>
+      <pre><code class="language-css line-numbers">
+        label {
+          background: url(https://goo.gl/MU28uI) no-repeat
+          center / cover;
+        }
+
+        input:checked ~ label{
+          left: 330px;
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2>Почти все готово...</h2>
+      <p>Так-то лучше! Теперь при нажатии на <code>label</code> наше меню реагирует и появляется или исчезает.</p>
+      <p><a href="https://codepen.io/solarrust/pen/mRQodz?editors=1100">Посмотреть результат на Code Pen</a></p>
+    </section>
+
+    <section class="slide chapter">
+      <h2>Наводим лоск</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Добавляем плавность</h2>
+      <p>Теперь у нас все работает. Но современные технологии способны на большее. Давайте добавим плавности нашим трансформациям. Для этого нам потребуется свойство <code>transition</code>. Мы добавим его всем элементам, которые двигаются:</p>
+      <pre><code class="language-css line-numbers">
+        nav {
+          transition: margin-left 400ms ease-in;
+        }
+
+        main {
+          transition: transform 400ms ease-in;
+        }
+
+        label {
+          transition: left 400ms ease-in;
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2>Шорткат <code>transition</code></h2>
+      <p><b>Шорткатом</b> называют короткое свойство, объединяющее несколько значений.</p>
+      <code>transition: [ none | 'transition-property' ] || 'transition-duration' ||
+   'transition-timing-function' || 'transition-delay'</code>
+      <p>В нашем случае мы будем изменять значения свойств <br>
+        <code>transition-property</code>, <code>transition-duration</code> и <br>
+        <code>transition-timing-function</code>, перечисляя нужные значения по порядку через пробел.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Реакция на мышь</h2>
+      <p>И еще немного красоты: добавим реакцию пунктам меню на наведение курсора мыши. Сделаем это при помощи уже упомянутого псевдокласса <code>:hover</code>:</p>
+      <pre><code class="language-css line-numbers">
+        nav a:hover {
+          color: red;
+          transition: color 200ms;
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2>Отличная работа!</h2>
+      <p>Наша работа окончена! Теперь вы сможете сверстать такое же меню на любом сайте. Меняйте стили, время трансформации, добавляйте свою магию и не бойтесь экспериментировать.</p>
+      <p><a href="https://codepen.io/solarrust/pen/jyQJey?editors=1100">Посмотреть финальный вариант на Code Pen</a></p>
+      <p><a href="https://github.com/netology-code/slide-in-menu">Исходный код на Github</a></p>
+      <p style="text-align: center"><img src="https://images.jacobinmag.com/2013/05/515e61e2c2337_gatsby5.jpg" alt=""></p>
+    </section>
+
+    <section class="slide chapter">
+      <h2>Факультативная часть</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Кроссбраузерность</h2>
+      <p>Дополнительно мы можем добавить кроссбраузерности.
+      Под кроссбраузерностью следует понимать одинаковую работу и внешний вид во всех нужных нам браузерах.
+      Для этого нам нужно будет познакомиться с понятием <b>вендорный префикс</b>.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Вендорные префиксы</h2>
+      <p>С помощью вендорных префиксов браузеры, которые еще не в полной мере поддерживают то или иное свойство могут делать то, что нам нужно.</p>
+      <p>Проверить, какие свойства поддерживаются, а какие нет можно на сайте <a href="caniuse.com">Can I use</a>.
+      К тому же в большинстве текстовых редакторов можно установить специальный плагин Автопрефиксер, который за вас будет проверять свойства и расставлять префиксы там, где это требуется. Но пока мы сделаем это руками.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Добавляем <code>-webkit-</code></h2>
+      <p>Вендорный префикс <code>-webkit-</code> нужен для того, чтобы наша верстка отлично работала в браузерах на основе Хромиума (Хром, Опера, Яндекс.Браузер). Все остальные браузеры отлично понимают все написанные нами стили:</p>
+      <pre><code class="language-css line-numbers">
+        nav {
+          -webkit-transition: margin-left 400ms ease-in;
+          transition: margin-left 400ms ease-in;
+        }
+
+        main {
+          -webkit-transition: -webkit-transform 400ms ease-in;
+          transition: -webkit-transform 400ms ease-in;
+          transition: transform 400ms ease-in;
+          transition: transform 400ms ease-in, -webkit-transform 400ms ease-in;
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2>Добавляем <code>-webkit-</code>. Продолжение</h2>
+      <pre><code class="language-css line-numbers">
+        nav a:hover {
+          -webkit-transition: color 200ms;
+          transition: color 200ms;
+        }
+
+        label {
+          -webkit-transition: left 400ms ease-in;
+          transition: left 400ms ease-in;
+        }
+
+        input:checked ~ main {
+          -webkit-transform: translate3d(320px, 0, 0);
+          transform: translate3d(320px, 0, 0);
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide last">
+      <p class="thanx">Ждем вас на программе <br> <a href="http://netology.ru/programs/html-verstka">HTML-верстка: с нуля до первого макета</a></p>
+      <address>Татьяна Тен</address>
+      <ul class="contacts">
+        <li><a href="mailto:tt@webcoalition.ru"><i class="fa fa-envelope-o" aria-hidden="true"></i>tt@webcoalition.ru</a></li>
+        <li><a href="https://fb.me/tanya.ten10"><i class="fa fa-facebook" aria-hidden="true"></i>fb.me/tanya.ten10</a></li>
+      </ul>
+    </section>
+
+    <div class="progress"></div>
+    <script src="../../node_modules/shower-core/shower.min.js"></script>
+    <script src="../../common/js/prism.js?v=2"></script>
+    <script src="https://use.fontawesome.com/30b5a52164.js"></script>
+  </body>
+</html>

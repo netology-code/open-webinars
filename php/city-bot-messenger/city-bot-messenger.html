@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>Создаём бота на PHP для платформы Messenger</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/node_modules/shower-ribbon/styles/screen-4x3.css">
+    <link rel="stylesheet" href="/common/css/prism.css">
+    <link rel="stylesheet" href="/common/css/prism-fix.css">
+    <link rel="stylesheet" href="/common/css/netology.css">
+  </head>
+  <body class="shower">
+    <header class="caption">
+      <h1>Создаём бота на PHP для платформы Messenger</h1>
+      <p>Дима Фитискин, Нетология</p>
+    </header>
+
+    <section class="slide" id="cover">
+      <h2>Создаём бота на PHP для платформы Messenger</h2>
+      <p>
+        <img src="/common/pic/authors/dfitiskin.jpg" alt="" class="avatar">
+        Дима Фитискин <span class="position">Нетология</span>
+      </p>
+    </section>
+
+    <section class="slide author" id="author">
+      <img src="/common/pic/authors/dfitiskin.jpg" alt="">
+      <h1>Дима Фитискин</h1>
+      <p class="position">Руковожу курсами по программированию в Нетологии</p>
+      <ul class="contacts">
+        <li><a href="mailto:dfitiskin@gmail.ru"><i class="fa fa-envelope-o" aria-hidden="true"></i>dfitiskin@gmail.ru</a></li>
+        <li><a href="skype:dfitiskin?call"><i class="fa fa-skype" aria-hidden="true"></i>dfitiskin</a></li>
+        <li><a href="https://fb.me/dfitiskin"><i class="fa fa-facebook" aria-hidden="true"></i>fb.me/dfitiskin</a></li>
+      </ul>
+    </section>
+
+    <section class="slide chapter">
+      <h2>Цели</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Мои цели</h2>
+      <ul>
+        <li>Показать что PHP довольно простой язык</li>
+        <li>Но при этом в нем есть все необходимые возможности для создания интересных приложений.</li>
+        <li>Вдохновить на создание чего-то своими руками, и показать что навык программировия очень этому способствует.</li>
+        <li>Заинтересовать кого-то из вас изучить PHP.</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Ваши цели</h2>
+      <p>Для тех, кто никогда не программировал:</p>
+      <ul>
+        <li>Узнать как создаются боты и какие у них возможности</li>
+        <li>Расширить кругозор</li>
+        <li>Посмотреть как выглядит процесс программирования изнутри</li>
+        <li>Показать что компьютеры весьма глупые и примитивные :)</li>
+      </ul>
+      <p>Для тех, кто программирует на другом языке:</p>
+      <ul>
+        <li>Понять как взаимодействует Facebook и приложение</li>
+        <li>Посмотреть как тоже самое делается на PHP</li>
+        <li>Посмотреть как может быть устроен бот</li>
+      </ul>
+      <p>Если вы программируете на PHP и создаете ботов, то наверное вы пришли меня потроллить :)</p>
+    </section>
+
+    <section class="slide chapter">
+      <h2>Подготовка</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Вам потребуется</h2>
+      <ul>
+        <li>Аккаунт на Facebook</li>
+      </ul>
+      <p>А так же:</p>
+      <ul>
+        <li>Редактор с подсветкой синтаксиса PHP установленный локально. Например, <a href="https://atom.io">Atom</a>.</li>
+        <li><a href="http://php.net">Интерпретатор PHP</a> установленный локально.</li>
+        <li>Менеджер зависимостей <a href="https://getcomposer.org">Composer</a> установленный локально.</li>
+        <li>Публичный PHP хостинг с поддержкой HTTPS протокола с FTP/SSH доступом и/или с поддержкой git и Composer. Например <a href="https://www.heroku.com/php">Heroku</a>.</li>
+        <li>Система контроля версий кода <a href="https://git-scm.com">git</a> установленная локально. Не обязательно.</li>
+      </ul>
+
+      <p>Как много всего! Но можно проще.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Среда разработки в облаке</h2>
+      <img class="cover" src="./pic/c9.png" alt="Среда разработки">
+      <p class="place bottom" style="padding-bottom: 1em;">
+        <a href="https://c9.io/">Cloud9</a> — облачная <abbr title="Интегрированная среда разработки (англ. Integrated Development Environment)">IDE</abbr>.<br>
+        <em>Осторожно! Просит данные карты</em>.
+      </p>
+    </section>
+
+    <section class="slide chapter">
+      <h2>Почему PHP?</h2>
+    </section>
+
+    <section class="slide chapter" id="programm">
+      <h2><a href="http://netology.ru/programs/php-sql">PHP/SQL: back-end разработка и базы данных</a></h2>
+      <h3>3 февраля</h3>
+      <style>
+        #programm {
+          background: url(/common/i/cover.svg) no-repeat center bottom / contain;
+          background-color: #5a5a91;
+        }
+
+        #programm * {
+          color: #fff;
+          font-weight: 900;
+          text-align: center;
+        }
+
+        #programm a {
+          background: none;
+        }
+
+        #programm h2:before {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        #programm h3 {
+          font-size: 64px;
+          color: #f3f3f3;
+        }
+      </style>
+    </section>
+
+    <section class="slide">
+      <h2>Самый востребованный язык</h2>
+      <city>Источник: статья с хабра <a href="https://habrahabr.ru/company/hh/blog/318450/">Самые востребованные языки программирования 2016</a></city>
+      <img src="./pic/lang-rate.jpg" alt="Популярность языков в 2016" width="800px">
+    </section>
+
+    <section class="slide">
+      <h2>Развивается</h2>
+      <ul>
+        <li>Последний релиз 19 января, 2 недели назад.</li>
+        <li>Появился менеджер зависимостей <a href="https://getcomposer.org">Composer</a> и <a href="https://packagist.org">репозиторий пакетов</a></li>
+        <li>Теперь есть PSR (<em>PHP Standards Recommendations</em>) — рекомендуемые стандарты разработки на PHP.</li>
+      </ul>
+    </section>
+
+    <section class="slide chapter">
+      <h2>Часть 1. Создание игры</h2>
+    </section>
+
+    <section class="slide">
+      <h2>План первой части</h2>
+      <p>Создадим простое консольное приложение, которое будет играть в города:</p>
+      <ol>
+        <li>Как работает PHP.</li>
+        <li>Пользовательский ввод.</li>
+        <li>Первая и последняя буква.</li>
+        <li>Проверка что слово начинается на нужную букву</li>
+        <li>Чтение городов из файла.</li>
+        <li>Проверка города на существование</li>
+        <li>Поиск городов на конкретную букву</li>
+        <li>Выбираем случайный город из списка</li>
+        <li>Запоминаем названные города и проверяем что город не назван.</li>
+      </ol>
+    </section>
+
+    <section class="slide">
+      <h2>Hello world на PHP</h2>
+      <p>Создадим файл <code>hw.php</code>, напишем туда:</p>
+      <pre>
+        <code class="language-php line-numbers">
+          Hello world!
+        </code>
+      </pre>
+      <p>Выполним файл в консоли:</p>
+      <pre>
+        <code class="language-markup">
+          php -f hw.php
+        </code>
+      </pre>
+      <p>Видим такой результат:</p>
+      <pre>
+        <code class="language-markup">
+          Hello world!
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Тэг PHP</h2>
+      <p>В PHP текст — это просто текст. Сам код пишется внутри php-тега. Состоит он из дву частей: <code>&lt;?php</code> — открывающий и <code>?&gt;</code> — закрывающий.</p>
+<pre><code class="language-php line-numbers">
+&lt;?php
+  echo 'Hello World!' . PHP_EOL;
+?&gt;
+</code></pre>
+      <p>Закрывать php-тег добавлять не обязательно. И я даже рекомендую его не добавлять, если у вас в файле только php-код.</p>
+      <p>Дальше в примерах я не буду показывать php-теги в файлах в целях экономии места на слайде. Учитвыйте, что каждый файл начинается с открывающего php-тега.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Заклинание для показа ошибок</h2>
+      <p>По умолчанию в PHP не показываются ошибки, так как веб-среде это не безопасно. Но на время разработки включим их:</p>
+      <pre>
+        <code class="language-php line-numbers">
+          error_reporting(E_ALL);
+          ini_set('display_errors', 1);
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Запросим город у пользователя:</h2>
+      <p>С помощью команды <code>readline</code> можно запросить пользователя ввести строку:</p>
+      <pre>
+        <code class="language-php line-numbers">
+          $city = readline('Напишите название города: ');
+          echo 'Город: ' . $city . PHP_EOL;
+        </code>
+      </pre>
+
+      <p>Пример работы скрипта:</p>
+      <pre>
+        <code class="language-markup">
+          $ php -f test.php
+          Напишите название города: Самара
+          Город: Самара
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Первая и последняя буква</h2>
+      <pre>
+        <code class="language-php line-numbers">
+          $city = readline('Напишите название города: ');
+          echo 'Город: ' . $city . PHP_EOL;
+          echo 'Первая буква: ' . $city[0] . PHP_EOL;
+          echo 'Последняя буква: ' . $city[strlen($city) - 1] . PHP_EOL;
+        </code>
+      </pre>
+      <p>Пример работы скрипта немного не ожиданный:</p>
+      <pre>
+        <code class="language-markup">
+          $ php -f test.php
+          Напишите название города: Самара
+          Город: Самара
+          Первая буква: <mark class="important">�</mark>
+          Последняя буква: <mark class="important">�</mark>
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Мультибайтные кодировки и PHP</h2>
+      <p>Кодировки в которых под символ выделяется 2 и более байт, например <code>UTF-8</code>, беда PHP. От этого загнулся релиз версии <code>6</code>, где планировалось внедрить такую поддержку.</p>
+      <p>Используем библиотеку <code>mb-string</code> и напишем две функции:</p>
+      <pre>
+        <code class="language-php line-numbers">
+          mb_internal_encoding('UTF-8');
+          function getFirst($text)
+          {
+            return mb_substr($text, 0, 1);
+          }
+          function getLast($text)
+          {
+            return mb_substr($text, -1);
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Первая и последняя буква UTF-8</h2>
+      <p>Используем наши функции:</p>
+      <pre>
+        <code class="language-php line-numbers">
+          $city = readline('Напишите название города: ');
+          echo 'Город: ' . $city . PHP_EOL;
+          echo 'Первая буква: ' . getFirst($city) . PHP_EOL;
+          echo 'Последняя буква: ' . getLast($city) . PHP_EOL;
+        </code>
+      </pre>
+      <p>Пример работы скрипта немного не ожиданный:</p>
+      <pre>
+        <code class="language-markup">
+          $ php -f test.php
+          Напишите название города: Самара
+          Город: Самара
+          Первая буква: <mark>С</mark>
+          Последняя буква: <mark>а</mark>
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Проверка первой буквы</h2>
+      <p>Попросим ввести город на букву «к»:</p>
+      <pre>
+        <code class="language-php line-numbers">
+          $city = readline('Напишите название города на «к»: ');
+          $letter = getFirst($city);
+          if ('к' === $letter) {
+            echo 'Правильно' . PHP_EOL;
+          } else {
+            echo 'Ошибка' . PHP_EOL;
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Нижний регистр</h2>
+      <p>Поправим наши функции:</p>
+      <pre>
+        <code class="language-php line-numbers">
+          mb_internal_encoding('UTF-8');
+          function getFirst($text)
+          {
+            return mb_substr(<mark>mb_strtolower($text)</mark>, 0, 1);
+          }
+          function getLast($text)
+          {
+            return mb_substr(<mark>mb_strtolower($text)</mark>, -1);
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Чтение городов из файла</h2>
+      <p>Для чтения используем функцию <code>file</code>:</p>
+      <pre>
+        <code class="language-php line-numbers">
+          function getCities()
+          {
+            $strings = file('./data/cities.txt');
+            return $strings;
+          }
+          $cities = getCities();
+        </code>
+      </pre>
+      <p>Она нам вернет список строк этого файла.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Чистка городов</h2>
+      <p>Удалим символы переноса строк, и приведем города в нижний регистр:</p>
+      <pre>
+        <code class="language-php line-numbers">
+          function getCities()
+          {
+            $strings = file('./data/cities.txt');
+            <mark>return array_map(function ($string) {
+              return mb_strtolower(trim($string));
+            }, $strings);</mark>
+          }
+          $cities = getCities();
+        </code>
+      </pre>
+      <p>Функция <code>trim</code> удалит все пробельные символы в начале и в конце строки.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Проверим что такой город существует</h2>
+      <pre>
+        <code class="language-php line-numbers">
+          function includes($item, $list)
+          {
+            $item = mb_strtolower($item);
+            return array_search($item, $list) !== false;
+          }
+
+          $cities = getCities();
+          $city = readline('Напишите название города: ');
+
+          if (includes($city, $cities)) {
+            echo 'Такой город есть' . PHP_EOL;
+          } else {
+            echo 'Такого города нет' . PHP_EOL;
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Города на конкретную букву</h2>
+      <pre>
+        <code class="language-php line-numbers">
+          function filterByFirstLetter($letter, $list)
+          {
+            $result = array_filter($list, function ($item) use ($letter) {
+              return getFirst($item) === $letter;
+            });
+            return array_values($result);
+          }
+
+          $cities = getCities();
+          $letter = getFirst(readline('Назовите букву: '));
+
+          $result = filterByFirstLetter($letter, $cities);
+          echo 'Города на букву «' . $letter . '»: ';
+          echo implode(', ', $result) . PHP_EOL;
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Случайный город из списка</h2>
+      <pre>
+        <code class="language-php line-numbers">
+          function getRandomItem($list)
+          {
+            $index = rand(0, count($list) - 1);
+            return $list[$index];
+          }
+
+          $cities = getCities();
+          $letter = getFirst(readline('Назовите букву: '));
+
+          $result = filterByFirstLetter($letter, $cities);
+          echo 'Случайный город на букву «' . $letter . '»: ';
+          echo getRandomItem($result) . PHP_EOL;
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Следующий город</h2>
+      <pre>
+        <code class="language-php line-numbers">
+          function getNextCity($city, $cities)
+          {
+            $letter = getLast($city);
+            $available = filterByFirstLetter($letter, $cities);
+            return getRandomItem($available);
+          }
+
+          $cities = getCities();
+          $city = readline('Назовите город: ');
+
+          if (!includes($city, $cities)) {
+            echo 'Такого города нет.' . PHP_EOL;
+          } else {
+            echo 'Город: ' . getNextCity($city, $cities) . PHP_EOL;
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Заготовка игры</h2>
+      <pre style="font-size: 0.9em">
+        <code class="language-php line-numbers">
+          $cities = getCities();
+          do {
+            $city = readline('Назовите город: ');
+            $letter = getFirst($city);
+            if (!includes($city, $cities)) {
+              echo 'Такого города нет.' . PHP_EOL;
+              continue;
+            }
+            if (isset($prevLetter) &amp;&amp; $prevLetter !== $letter) {
+              echo 'Нужен город на ' . $prevLetter . PHP_EOL;
+              continue;
+            }
+            $city = getNextCity($city, $cities);
+            $prevLetter = getLast($city);
+            echo $city . '! Тебе на ' . $prevLetter . PHP_EOL;
+          } while (true);
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Избавляемся от ы, й, ь</h2>
+      <pre>
+        <code class="language-php line-numbers">
+          function getLast($text)
+          {
+            $badLetters = ['ы', 'ь', 'й'];
+            $i = -1;
+
+            do {
+              $letter = mb_substr($text, $i, $i === -1 ? null : $i + 1);
+              --$i;
+            } while (includes($letter, $badLetters));
+            return $letter;
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Запоминаем города</h2>
+      <pre style="font-size: 0.6em">
+        <code class="language-php line-numbers">
+          $cities = getCities();
+          <mark>$used = [];</mark>
+          do {
+            $city = readline('Назовите город: ');
+            $letter = getFirst($city);
+            if (!includes($city, $cities)) {
+              echo 'Такого города нет.' . PHP_EOL;
+              continue;
+            }
+            <mark>if (includes($city, $used)) {
+              echo 'Такой город уже был.' . PHP_EOL;
+              continue;
+            }</mark>
+            if (isset($prevLetter) &amp;&amp; $prevLetter !== $letter) {
+              echo 'Нужен город на ' . $prevLetter . PHP_EOL;
+              continue;
+            }
+            <mark>$used[] = $city;</mark>
+            $city = getNextCity($city, $cities);
+            <mark>$used[] = $city;</mark>
+            $prevLetter = getLast($city);
+            echo $city . '! Тебе на ' . $prevLetter . PHP_EOL;
+          } while (true);
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Запрещаем боту повторяться</h2>
+      <pre>
+        <code class="language-php line-numbers">
+          function exclude($from, $items)
+          {
+            $result = array_diff($from, $items);
+            return array_values($result);
+          }
+
+          function getNextCity($city, $cities<mark>, $used</mark>)
+          {
+            $letter = getLast($city);
+            <mark>$cities = exclude($cities, $used);</mark>
+            $available = filterByFirstLetter($letter, $cities);
+            return getRandomItem($available);
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Make PHP great again</h2>
+      <pre style="font-size: 0.6em">
+        <code class="language-php line-numbers">
+          class Neto\Cities
+          {
+            protected $cities = [];
+            protected $used = [];
+            protected $letter;
+
+            public function __construct()
+            {
+              $this->cities = getCities();
+            }
+
+            public function next($city)
+            {
+              $result = $this->checkCity($city);
+              if ($result !== CITY_OK) {
+                return [
+                  'state'   => $result,
+                  'letter'  => $this->letter,
+                  'city'    => $this->used ? $this->used[count($this->used) - 1] : null,
+                ];
+              }
+              $this->used[] = $city;
+              return $this->getNextCity($city);
+            }
+            //…
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Собираем игру</h2>
+      <pre style="font-size: 0.6em">
+        <code class="language-javascript line-numbers">
+          require_once __DIR__ . '/vendor/autoload.php';
+          use Neto\Cities;
+          $cities = new Cities();
+          do {
+            $city = readline('Назовите город: ');
+            $result = $cities->next($city);
+
+            switch ($result['state']) {
+              case CITY_NOT_EXISTS:
+                echo 'Такого города нет.' . PHP_EOL;
+                break;
+              case CITY_USED:
+                echo 'Такой город уже был.' . PHP_EOL;
+                break;
+              case CITY_NOT_NEXT:
+                echo 'Нужен город на ' . $result['letter'] . PHP_EOL;
+                break;
+              case CITY_OK:
+                echo $result['city'] . '! Тебе на ' . $result['letter'] . PHP_EOL;
+                break;
+            }
+          } while (true);
+        </code>
+      </pre>
+    </section>
+
+
+    <section class="slide chapter">
+      <h2>Часть 2. Основы ботостроения</h2>
+    </section>
+
+    <section class="slide">
+      <h2>План второй части</h2>
+      <p>Создадим бота, который умеет отвечать на сообщения:</p>
+      <ol>
+        <li>Создаем <a href="https://www.facebook.com/pages/create">страницу</a> и <a href="https://developers.facebook.com/apps">приложение</a> на Facebook.</li>
+        <li>PHP на веб-сервере.</li>
+        <li>Напишем простой скрипт обработки запросов и запись их в журнал.</li>
+        <li>Типы событий Messenger и что они означают.</li>
+        <li>Подключим обработку событий Messenger нашим скриптом.</li>
+        <li>Что такое API и и теория отправки HTTP запросов</li>
+        <li>Пример отправки HTTP запроса.</li>
+        <li>Используем Facebook SDK для отправки сообщений.</li>
+        <li>Используем фреймворк для обработки событий Messenger и отправки ответов.</li>
+      </ol>
+    </section>
+
+    <section class="slide">
+      <h2></h2>
+      <pre>
+        <code class="language-php line-numbers">
+          Hello world!
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide chapter">
+      <h2>Часть 3. Учим бота играть</h2>
+    </section>
+
+    <section class="slide">
+      <h2>План третьей части</h2>
+      <p>Доработаем бота так, чтобы он мог играть в города с пользователем:</p>
+      <ol>
+        <li>Состояние игры и где можно его хранить.</li>
+        <li>Начинаем и заканчиваем игру по команде.</li>
+        <li>Разная обработка сообщений в зависимости от состояния.</li>
+        <li>Сообщение когда бот не играет.</li>
+        <li>Сообщение когда бот играет.</li>
+      </ol>
+    </section>
+
+    <section class="slide chapter" id="programm">
+      <h2><a href="http://netology.ru/free-lessons/dev-php-consultation-010217">Консультация по курсу PHP/SQL</a></h2>
+      <h3>1 февраля</h3>
+      <style>
+        #programm {
+          background: url(/common/i/cover.svg) no-repeat center bottom / contain;
+          background-color: #5a5a91;
+        }
+
+        #programm * {
+          color: #fff;
+          font-weight: 900;
+          text-align: center;
+        }
+
+        #programm a {
+          background: none;
+        }
+
+        #programm h2:before {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        #programm h3 {
+          font-size: 64px;
+          color: #f3f3f3;
+        }
+      </style>
+    </section>
+
+    <section class="slide last">
+      <p class="thanx">Приходите на консультацию по курсу PHP!</p>
+      <address>Дима Фитискин</address>
+      <ul class="contacts">
+        <li><a href="mailto:dfitiskin@gmail.ru"><i class="fa fa-envelope-o" aria-hidden="true"></i>dfitiskin@gmail.ru</a></li>
+        <li><a href="skype:dfitiskin?call"><i class="fa fa-skype" aria-hidden="true"></i>dfitiskin</a></li>
+        <li><a href="https://fb.me/dfitiskin"><i class="fa fa-facebook" aria-hidden="true"></i>fb.me/dfitiskin</a></li>
+      </ul>
+    </section>
+
+    <div class="progress"></div>
+    <script src="/node_modules/shower-core/shower.min.js"></script>
+    <script src="/common/js/prism.js?v=2"></script>
+    <script src="https://use.fontawesome.com/30b5a52164.js"></script>
+  </body>
+</html>

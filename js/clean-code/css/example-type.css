@@ -1,0 +1,17 @@
+pre[class*="example-"][class*="language-"] {
+  background-repeat: no-repeat;
+  background-position: 98% 5%;
+  background-size: 48px;
+}
+
+pre.example-good[class*="language-"] {
+  background-image: url(../i/good.png);
+}
+
+pre.example-ugly[class*="language-"] {
+  background-image: url(../i/ugly.png);
+}
+
+pre.example-weak[class*="language-"] {
+  background-image: url(../i/weak.png);
+}

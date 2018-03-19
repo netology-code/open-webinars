@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>Telegram + PHP = Бот</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/node_modules/shower-ribbon/styles/screen-4x3.css">
+    <link rel="stylesheet" href="/common/css/prism.css">
+    <link rel="stylesheet" href="/common/css/prism-fix.css">
+    <link rel="stylesheet" href="/common/css/netology.css">
+  </head>
+  <body class="shower">
+    <header class="caption">
+      <h1>Telegram + PHP = Бот</h1>
+      <p>Дима Фитискин, Нетология</p>
+    </header>
+
+    <section class="slide" id="cover">
+      <h2>Telegram + PHP = Бот</h2>
+      <p>
+        <img src="/common/pic/authors/dfitiskin.jpg" alt="" class="avatar">
+        Дима Фитискин <span class="position">Нетология</span>
+      </p>
+    </section>
+
+    <section class="slide author" id="author">
+      <img src="/common/pic/authors/dfitiskin.jpg" alt="">
+      <h1>Дима Фитискин</h1>
+      <p class="position">Руковожу курсами по программированию в Нетологии</p>
+      <ul class="contacts">
+        <li><a href="mailto:dfitiskin@gmail.ru"><i class="fa fa-envelope-o" aria-hidden="true"></i>dfitiskin@gmail.ru</a></li>
+        <li><a href="skype:dfitiskin?call"><i class="fa fa-skype" aria-hidden="true"></i>dfitiskin</a></li>
+        <li><a href="https://fb.me/dfitiskin"><i class="fa fa-facebook" aria-hidden="true"></i>fb.me/dfitiskin</a></li>
+      </ul>
+    </section>
+
+<section class="slide" id="roadmap">
+  <h2>План</h2>
+  <ol>
+    <li><a href="#environment">Подготовка среды</a></li>
+    <li><a href="#telegram">Как устроен Telegram</a></li>
+    <li><a href="#json">JSON Формат</a></li>
+    <li><a href="#message">Получение сообщений</a></li>
+    <li><a href="#refactoring">Организация кода</a></li>
+    <li><a href="#echo">Эхо-бот</a></li>
+    <li><a href="#processing">Проблема с обработкой</a></li>
+    <li><a href="#command">Обработка команд Telegram</a></li>
+    <li><a href="#webhook">Настройка Webhook</a></li>
+  </ol>
+</section>
+
+    <section class="slide chapter" id="environment">
+      <h2>Подготовка среды</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Cloud9</h2>
+      <figure>
+        <img src="pic/cloud9.png" alt="#">
+      </figure>
+      <figcaption><p><a href="https://c9.io/">Cloud9</a> - облачная среда разработки. Отличное решение для тех, кто ранее не программировал на PHP</p></figcaption>
+    </section>
+
+    <section class="slide">
+      <h2>Интерфейс</h2>
+    <figure>
+      <img src="pic/cloud9-3.png" alt="#">
+    </figure>
+  </section>
+
+    <section class="slide chapter" id="telegram">
+      <h2>Как устроен Telegram</h2>
+    </section>
+
+    <section class="slide">
+      <figure class="blockquote">
+        <img src="pic/botfather.png" alt="#">
+        <blockquote>
+          <p>Botfather - специальный бот, для создания других ботов</p>
+        </blockquote>
+      </figure>
+    </section>
+
+    <section class="slide">
+      <figure class="blockquote">
+        <img src="pic/token.png" alt="">
+        <blockquote>
+          <p>Токен - это пароль, чтобы телеграм понял что это мы</p>
+        </blockquote>
+      </figure>
+    </section>
+
+    <section class="slide">
+      <figure>
+        <img src="pic/telegram.png" alt="#">
+        <figcaption>
+          <p>Задаем имя и аккаунт, получаем токен </p>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="slide">
+      <figure class="blockquote">
+          <img src="pic/api.png" alt="">
+        <blockquote>
+          <p>API - набор доступных команд с описанием как их вызвать</p>
+        </blockquote>
+      </figure>
+    </section>
+
+    <section class="slide">
+      <h2>Основные команды Telegram</h2>
+        <ul>
+          <li><code>getMe</code> — получить информацию о боте;</li>
+          <li><code>getUpdates</code> — получить информацию о новых сообщениях и событиях;</li>
+          <li><code>sendMessage</code> — отправить сообщение.</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Принцип вызова команд API</h2>
+        <ul>
+          <li>чтобы выполнить команду нужно просто сделать HTTP запрос определенного адреса;</li>
+          <li>можно передать дополнительные данные;</li>
+          <li>сервер Telegram выполнит команду и вернет результат;</li>
+          <li>а так же некоторые данные.</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Http-клиент и http-сервер</h2>
+      <img src="pic/http-client.png" alt="#">
+    </section>
+
+    <section class="slide">
+      <h2>Http-клиент и http-сервер</h2>
+      <img src="pic/http-client2.png" alt="#">
+    </section>
+
+    <section class="slide">
+      <h2>Алгоритм бота</h2>
+        <ol>
+          <li>берем токен;</li>
+          <li>формируем адрес команды;</li>
+          <li>запрашиваем данные по адресу команды;</li>
+          <li>получаем результат в переменную;</li>
+          <li>выводим содержимое переменной на экран.</li>
+        </ol>
+    </section>
+
+    <section class="slide chapter" id="json">
+      <h2>Json формат</h2>
+    </section>
+
+    <section class="slide">
+      <figure class="blockquote">
+        <img src="pic/structure.png" alt="#">
+        <blockquote>
+          <p>Программно легко обрабатывать структурированные данные и сложно не структурированные</p>
+        </blockquote>
+      </figure>
+    </section>
+
+    <section class="slide">
+      <h2>Типы данных</h2>
+        <ul>
+          <li>строка;</li>
+          <li>число;</li>
+          <li>список;</li>
+          <li>структура.</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Список</h2>
+        <ul>
+          <li>имеет числовые индексы;</li>
+          <li>индекс начинается с 0 и идут подряд;</li>
+          <li>под каждым индексом хранятся элемент, в котором те или иные данные (строка, число, список, структура);</li>
+          <li>можем получить общее кол-во элементов;</li>
+          <li>можем получить элемент по индексу;</li>
+          <li>идеально для хранения неограниченного числа однотипных данных.</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Структура</h2>
+        <ul>
+          <li>произвольное строковые свойства;</li>
+          <li>значения свойств это строка, число, список или структура;</li>
+          <li>можем получить список свойств;</li>
+          <li>можем получить значение свойства;</li>
+          <li>похож на список со строковыми индексами.</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Форматы данных</h2>
+        <ul>
+          <li>нужны чтобы описать данные;</li>
+          <li>позволяют структурировать и передавать данные между программами написанными на разных языках программирования;</li>
+          <li>наиболее распространенные: XML, JSON, CSV.</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+      <figure class="blockquote">
+        <img src="pic/json.png" alt="#">
+        <blockquote>
+          <p>JSON - формат описания объектов из языка Javascript</p>
+        </blockquote>
+      </figure>
+    </section>
+
+    <section class="slide">
+      <h2>JSON - срособ разметки данных</h2>
+        <ul>
+          <li>строки и целые и дробные числа;</li>
+          <li>можно использовать структуры <code>{}</code> и списки <code>[]</code>;</li>
+          <li>кавычки у названий свойств объекта обязательны, и только двойные <code>"</code>;</li>
+          <li>активно применяется в API и местами вытеснил XML.</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+      <h2>JSON списки</h2>
+      <pre>
+        <code class="language-javascript">
+          [1, 2, 3, 4, 5]
+          ["Иван", "Петр", "Николай", "Олег"]
+          ["Иван", 34, 99, "Олег"]
+       </code>
+     </pre>
+    </section>
+
+    <section class="slide">
+      <h2>JSON структуры</h2>
+      <pre>
+        <code class="language-javascript line-numbers">
+          {
+            name: "Иван",
+            age: 27,
+            address: "Ленина, 34-102"
+          }
+       </code>
+     </pre>
+    </section>
+
+    <section class="slide">
+      <h2>JSON общий случай</h2>
+        <pre>
+          <code class="language-javascript line-numbers">
+            [
+            {name: "Иван", age: 27, address: "Ленина, 34-102"},
+            {name: "Ольга", age: 22, address: "Пушкина, 4-13"},
+            {name: "Илья", age: 32, address: "Сталина, 2-51"}
+            ]
+          </code>
+        </pre>
+    </section>
+
+    <section class="slide">
+      <figure class="blockquote">
+        <img src="pic/parcing.png" alt="#">
+        <blockquote>
+          <p>Парсинг - преобразование из одного формата в другой</p>
+        </blockquote>
+      </figure>
+    </section>
+
+    <section class="slide">
+      <h2>Алгоритм бота</h2>
+        <ol>
+          <li>запрашиваем новые сообщения;</li>
+          <li>получаем результат;</li>
+          <li>преобразуем результат в структуры данных PHP;</li>
+          <li>получаем свойства из структуры данных;</li>
+          <li>выводим на экран.</li>
+        </ol>
+    </section>
+
+    <section class="slide chapter" id="message">
+      <h2>Получение сообщений</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Условие <code>if-else</code></h2>
+      <pre>
+        <code class="language-php line-numbers">
+          $names = ['Иван', 'Петр', 'Олег'];
+          if ($names) { echo 'Имена есть' . PHP_EOL;
+          } else {
+          echo 'Имена не заданы' . PHP_EOL;
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Цикл <code>foreach</code></h2>
+      <pre>
+        <code class="language-php line-numbers">
+          $names = ['Иван', 'Петр', 'Олег'];
+          foreach ($names as $name) {
+          echo $name . PHP_EOL;
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Алгоритм бота</h2>
+        <ol>
+          <li>получаем новые сообщения;</li>
+          <li>если ошибка, завершаем работу;</li>
+          <li>если список пуст, завершаем работу;</li>
+          <li>перебираем сообщения с помощью цикла;</li>
+          <li>для каждого сообщения получаем имя отправителя и текст;</li>
+          <li>формируем строку</li>
+          <li>выводим на экран.</li>
+        </ol>
+    </section>
+
+    <section class="slide chapter" id="refactoring">
+      <h2>Организация кода</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Функции</h2>
+        <ul>
+          <li>позволяют многократно использовать определенный фрагмент кода;</li>
+          <li>имеют аргументы;</li>
+          <li>возвращают результат.</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Цикл <code>foreach</code></h2>
+      <pre>
+        <code class="language-php line-numbers">
+          function greeting($name) {
+          echo 'Привет, ' . $name . '!' . PHP_EOL;
+          }
+
+          greeting('Иван');
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Подключение библиотек</h2>
+        <ul>
+          <li>делает доступным код из одного файла внутри другого файла;</li>
+          <li>лучше организация кода;</li>
+          <li>меньше копирования — меньше ошибок.</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Цикл <code>foreach</code></h2>
+      <p>lib.php</p>
+      <pre>
+        <code class="language-php">
+          function greeting($name) {
+          echo 'Привет, ' . $name . '!' . PHP_EOL;
+          }
+        </code>
+      </pre>
+      <p>app.php</p>
+      <pre>
+        <code class="language-php">
+          include('lib.php');
+          greeting('Иван');
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>План рефакторинга</h2>
+        <ol>
+          <li>выносим вызов команд и обработку результата в функцию;</li>
+          <li>выносим функцию в отдельный файл;</li>
+          <li>подключаем файл;</li>
+          <li>проверяем работу.</li>
+        </ol>
+    </section>
+
+    <section class="slide chapter" id="echo">
+      <h2>Эхо бот</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Отправка сообщений пользователям Telegram</h2>
+        <ul>
+          <li>бот может отправить сообщение только в чат;</li>
+          <li>для этого нам нужно знать идентификатор чата;</li>
+          <li>получить идентификатор чата мы можем только если кто-то инициирует переписку с ботом;</li>
+          <li>бот не может сам инициировать переписку.</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Алгоритм Эхо-бота</h2>
+        <ol>
+          <li>получаем сообщения;</li>
+          <li>для каждого сообщения получаем чат и текст сообщения;</li>
+          <li>отправляем сообщение с этим текстом в этот чат;</li>
+          <li>выводим на экран результат.</li>
+        </ol>
+    </section>
+
+    <section class="slide chapter" id="processing">
+      <h2>Проблема с обработкой</h2>
+    </section>
+
+    <section class="slide">
+      <figure class="blockquote">
+        <img src="pic/message.png" alt="#">
+        <blockquote>
+          <p>Хьюстон, у нас проблема - наш бот каждый раз отвечает на все сообщения, даже на те, на котрые уже ответил</p>
+        </blockquote>
+      </figure>
+    </section>
+
+    <section class="slide">
+      <h2>Алгоритм бота</h2>
+        <ul>
+          <li>проверяем файл;</li>
+          <li>если файл существует, получаем из него ID последнего обновления;</li>
+          <li>добавляем его в параметры запроса;</li>
+          <li>запрашиваем сообщения с параметрамиу;</li>
+          <li>обрабатываем сообщения;</li>
+          <li>запоминаем ID последнего обновления в переменную;</li>
+          <li>сохраняем ID в файл.</li>
+        </ul>;
+    </section>
+
+    <section class="slide chapter" id="command">
+      <h2>Обработка команд Telegram</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Что такое команды</h2>
+      <p>Анализировать сообщения — очень сложная задача. Поэтому самый простой вариант — сделать бота понимающего простые команды:</p>
+        <ul>
+
+          <li>команды начинаются со <code>/</code>;</li>
+          <li>команды позволяют давать боту четкие указания;</li>
+          <li>при начале беседы бот получает команду <code>/start</code>;</li>
+          <li>можно настроить и другие команды и упростить их вызов.</li>
+        </ul>
+    </section>
+
+    <section class="slide chapter" id="webhook">
+      <h2>Настройка webhook</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Вызов команд Telegram</h2>
+      <img src="pic/http-client2.png" alt="#">
+    </section>
+
+    <section class="slide">
+      <h2>PHP на веб-сервере</h2>
+      <img src="pic/php-web.png" alt="#">
+    </section>
+
+    <section class="slide">
+      <h2>ОБработка webhook</h2>
+      <img src="pic/webhook.png" alt="#">
+    </section>
+
+    <section class="slide">
+      <h2>Исходный код</h2>
+      <p>Посмотреть исходный код бота на <a href="https://github.com/netology-code/netology-simple-bot">Github</a></p>
+    </section>
+
+    <section class="slide last">
+      <p class="thanx">Приходите на консультацию по курсу PHP!</p>
+      <address>Дима Фитискин</address>
+      <ul class="contacts">
+        <li><a href="mailto:dfitiskin@gmail.ru"><i class="fa fa-envelope-o" aria-hidden="true"></i>dfitiskin@gmail.ru</a></li>
+        <li><a href="skype:dfitiskin?call"><i class="fa fa-skype" aria-hidden="true"></i>dfitiskin</a></li>
+        <li><a href="https://fb.me/dfitiskin"><i class="fa fa-facebook" aria-hidden="true"></i>fb.me/dfitiskin</a></li>
+      </ul>
+    </section>
+
+    <div class="progress"></div>
+    <script src="/node_modules/shower-core/shower.min.js"></script>
+    <script src="/common/js/prism.js?v=2"></script>
+    <script src="https://use.fontawesome.com/30b5a52164.js"></script>
+  </body>
+</html>

@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <title>Верстаем интерактивный баннер</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/node_modules/shower-ribbon/styles/screen-4x3.css">
+    <link rel="stylesheet" href="/common/css/prism.css">
+    <link rel="stylesheet" href="/common/css/prism-fix.css">
+    <link rel="stylesheet" href="/common/css/netology.css">
+    <link rel="stylesheet" href="/common/css/fake-browser.css">
+  </head>
+  <body class="shower">
+    <header class="caption">
+      <h1>Верстаем интерактивный баннер</h1>
+      <p>Вячеслав Крысин, Нетология</p>
+    </header>
+
+    <section class="slide" id="cover">
+      <h2>Верстаем интерактивный баннер</h2>
+      <p>
+        <img src="i/vs.jpeg" alt="" class="avatar">
+        Вячеслав Крысин <span class="position">Нетология</span>
+      </p>
+    </section>
+    <section class="slide author" id="author">
+      <img src="./pic/vs.jpeg" alt="">
+      <h1>Вячеслав Крысин</h1>
+      <p class="position">frontend-разработчик в Нетологии</p>
+      <ul class="contacts">
+        <li><a href="mailto:v.krysin@netology-group.ru"><i class="fa fa-envelope-o" aria-hidden="true"></i>v.krysin@netology-group.ru</a></li>
+      </ul>
+    </section>
+
+    <section class="slide chapter" id="programm">
+      <h2><a href="http://netology.ru/programs/html-verstka">HTML-верстка: с нуля до первого макета</a></h2>
+      <h3>20 января</h3>
+      <style>
+        #programm {
+          background: url(pic/cover.svg) no-repeat center bottom / contain;
+          background-color: #5a5a91;
+        }
+
+        #programm * {
+          color: #fff;
+          font-weight: 900;
+          text-align: center;
+        }
+
+        #programm a {
+          background: none;
+        }
+
+        #programm h2:before {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        #programm h3 {
+          font-size: 64px;
+          color: #f3f3f3;
+        }
+      </style>
+    </section>
+
+    <section class="slide" id="roadmap">
+      <h2>План занятия</h2>
+      <ol>
+        <li>Введение</li>
+        <li>HTML-разметка</li>
+        <li>CSS-стили</li>
+        <li>Немного магии</li>
+      </ol>
+    </section>
+
+    <section class="slide chapter">
+      <h2>Введение</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Первая страница в интернете</h2>
+      <div class="fake-browser-ui" style="margin-bottom:1em">
+        <div class="frame">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <body>
+          <img src="pic/firstpage.png" alt="" style="max-width:100%;">
+        </body>
+      </div>
+      <p><a href="http://info.cern.ch/hypertext/WWW/TheProject.html">Открыть страницу</a></p>
+    </section>
+
+    <section class="slide">
+      <figure class="blockquote">
+        <img src="pic/js.jpg" alt="">
+        <blockquote>
+          <p><b>JavaScript</b> наиболее широкое применение находит в браузерах как язык сценариев для придания интерактивности веб-страницам.</p>
+        </blockquote>
+      </figure>
+    </section>
+
+    <section class="slide">
+      <h2>Сегодняшний день</h2>
+      <p>HTML и CSS на сегодняшний день достигли такого уровня развития, что большую часть интерактива на веб-сайтах можно реализовать только с их помощью.</p>
+      <img src="pic/css_html.svg" alt="" style="display:block;max-height:300px;margin:25px auto;">
+    </section>
+
+    <section class="slide">
+      <h2>Возможности</h2>
+      <ul>
+        <li>Реакция на наведение курсора (<code>:hover</code>)</li>
+        <li>Реакция на нажатие кнопки мыши (<code>:active</code>)</li>
+        <li>Отслеживание фокуса (<code>:focus</code>)</li>
+        <li>Анимация (<code>animation</code>)</li>
+        <li>Трансформация (<code>transformation</code>)</li>
+      </ul>
+      <p>И это далеко не все!</p>
+    </section>
+    <section class="slide">
+      <h2>Финальный результат</h2>
+      <div class="fake-browser-ui" style="margin-bottom:1em">
+        <div class="frame">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <body>
+          <a href="https://netology-code.github.io/interactive-banner/">
+            <img src="pic/final.png" alt="" style="max-width:100%;">
+          </a>
+        </body>
+      </div>
+      <a href="https://netology-code.github.io/interactive-banner/">Открыть страницу</a>
+    </section>
+    <section class="slide">
+      <h2>Рабочая среда</h2>
+      <ol>
+        <li>Текстовый редактор</li>
+        <li>Браузер</li>
+        <li>Идея или макет</li>
+      </ol>
+    </section>
+
+    <section class="slide">
+      <h2>Текстовые редакторы</h2>
+      <ul>
+        <li>Блокнот</li>
+        <li><a href="https://notepad-plus-plus.org/download/v7.3.html">Notepad++</a></li>
+        <li><a href="https://www.sublimetext.com/download">Sublime Text</a></li>
+        <li><a href="https://atom.io/">Atom</a></li>
+        <li><a href="http://brackets.io/">Brackets</a></li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Браузеры</h2>
+      <ul>
+        <li>На основе Chrome (<a href="https://www.google.com/chrome/browser/desktop/">Google Chrome</a>, <a href="http://www.opera.com/computer">Opera</a>)</li>
+        <li><a href="https://www.mozilla.org/ru/firefox/new/#">FireFox</a></li>
+        <li><a href="https://www.microsoft.com/ru-ru/download/internet-explorer.aspx">Internet Explorer</a> (<a href="https://www.microsoft.com/ru-ru/windows/microsoft-edge">Edge</a>)</li>
+        <li><a href="http://www.apple.com/ru/safari/">Safari</a></li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Вспомогательные инструменты</h2>
+      <ul>
+        <li>Проверяем поддержку свойств <a href="http://caniuse.com">Can I Use</a></li>
+        <li>Справочник по HTML и CSS на русском <a href="http://webref.ru">WebRef</a></li>
+        <li>Онлайн-редактор <a href="http://codepen.com">Code Pen</a></li>
+      </ul>
+    </section>
+
+    <section class="slide chapter">
+      <h2>Создаем HTML-разметку</h2>
+    </section>
+    <section class="slide">
+      <h2>Создаем файл</h2>
+      <p>Открываем текстовый редактор и создаем пустой документ. Сохраняем его в нужную папку под именем <code>index.html</code>.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Пишем обязательную разметку</h2>
+      <p>Все HTML-страницы должны содержать несколько обязательных строк разметки. Напишем их в пустом файле.</p>
+      <pre>
+        <code class="language-html line-numbers">
+          &lt;!DOCTYPE html>
+          &lt;html lang="ru">
+          &lt;head>
+            &lt;meta charset="UTF-8">
+            &lt;title>Члены семьи Симпсонов&lt;/title>
+          &lt;/head>
+          &lt;body>
+          &lt;/body>
+          &lt;/html>
+        </code>
+      </pre>
+      <p class="note">Если используете Emmet: напишите <code>!</code> затем нажмите Tab.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Виды <code>DOCTYPE</code></h2>
+      <p><code>DOCTYPE</code>, а точнее его атрибут указывает браузеру как следует интерпретировать HTML-документ.</p>
+      <table>
+        <tr>
+          <td><b>&lt;!DOCTYPE html></b></td>
+          <td><b>HTML5</b>, применяется для всех документов</td>
+        </tr>
+        <tr>
+          <td>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"></td>
+          <td>Строгий синтаксис HTML</td>
+        </tr>
+        <tr>
+          <td>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"></td>
+          <td>Переходный синтаксис HTML</td>
+        </tr>
+        <tr>
+          <td>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"></td>
+          <td>Строгий синтаксис XHTML</td>
+        </tr>
+      </table>
+    </section>
+
+    <section class="slide">
+      <h2><code>main</code></h2>
+      <p>Создаем основной родительский блок при помощи тега <code>main</code>:</p>
+      <pre>
+        <code class="language-html">
+          &lt;main>
+          &lt;/main>
+        </code>
+      </pre>
+      <p><code>main</code> – тег, который включает в себя содержимое, являющееся уникальным для данного документа, и не должен включать повторяющиеся разделы сайта, такие как навигация, название сайта, логотип, поисковая форма, баннеры и др.</p>
+    </section>
+
+    <section class="slide">
+      <h2><code>section</code></h2>
+      <p>Внутрь родительского блока <code>main</code> вложим несколь секций <code>section</code>. Сколько секций будет в разметке, на столько частей и будет разделен баннер.</p>
+      <pre>
+        <code class="language-html line-numbers">
+          &lt;main>
+            &lt;section>
+            &lt;/section>
+            &lt;section>
+            &lt;/section>
+            &lt;section>
+            &lt;/section>
+            &lt;section>
+            &lt;/section>
+            &lt;section>
+            &lt;/section>
+          &lt;/main>
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2><code>section</code></h2>
+      <p><code>section</code> – задаёт раздел документа, может применяться для блока новостей, контактной информации, глав текста, вкладок в диалоговом окне и др. Раздел обычно содержит заголовок.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Блоки для текста</h2>
+      <p>На каждой секции баннера будет заголовок, подзаголовок и описание. Создадим для этого по два блока в каждой секции, зададим им соответствующие классы:</p>
+      <pre>
+        <code class="language-html line-numbers">
+          &lt;section>
+            &lt;div class="cont_title">
+            &lt;/div>
+            &lt;div class="cont_desc">
+            &lt;/div>
+          &lt;/section>
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Блоки для текста</h2>
+      <p>Класс в CSS – задается при помощи атрибута <code>class</code> для любого HTML-тега и позволяет связать этот тег со свойствами CSS-стилей. Помогает различать одинаковые теги и присваивать им различные стили.</p>
+      <p><code>div</code> – является универсальным блочным элементом и предназначен для группирования элементов документа с целью изменения вида содержимого через стили.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Текстовые теги</h2>
+      <p>Теперь добавим в блок с классом <code>.cont_title</code> два тега для заголовка (<code>h2</code>) и подзаголовка (<code>h3</code>).</p>
+      <p>В блок с классом <code>.cont_desc</code> добавим абзац (<code>p</code>).</p>
+      <pre>
+        <code class="language-html line-numbers">
+          &lt;section>
+            &lt;div class="cont_title">
+              &lt;h2>Гомер&lt;/h2>
+              &lt;h3>Глава семьи&lt;/h3>
+            &lt;/div>
+            &lt;div class="cont_desc">
+              &lt;p>Работает на Спрингфилдской атомной электростанции.
+               Больше всего любит пиво, пончики и жену Мардж.&lt;/p>
+            &lt;/div>
+          &lt;/section>
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Текстовые теги</h2>
+      <p><code>h1-h6</code> – заголовки предназначены для использования вместе с абзацами и списками, чтобы нарисовать естественную структуру вашего документа. Поскольку заголовки несут больший семантический вес, будьте осторожны, сохраняя баланс между важным и «обычным» содержанием.</p>
+      <p><code>p</code> – определяет текстовый абзац. Элемент <code>p</code> является блочным, всегда начинается с новой строки, абзацы текста идущие друг за другом разделяются между собой отбивкой.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Конечная разметка</h2>
+      <p><a href="https://github.com/netology-code/interactive-banner/blob/master/index.html" target="_blank">Посмотреть конечную HTML-разметку</a></p>
+    </section>
+
+    <section class="slide chapter">
+      <h2>Оформляем страницу с помощью <br>CSS-стилей</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Создаем и подключаем файл</h2>
+      <p>В текстовом редакторе создаем файл, сохраняем его в ту же папку, что и <code>index.html</code> под названием <code>style.css</code>.</p>
+      <p>В файле <code>index.html</code> в шапке сайта (между <code>&lt;head></code> и <code>&lt;/head></code>) подключаем файл стилей:</p>
+      <pre>
+        <code class="language-html line-numbers">
+          &lt;head>
+            &lt;meta charset="UTF-8">
+            &lt;title>Члены семьи Симпсонов&lt;/title>
+            <mark>&lt;link rel="stylesheet" href="style.css"></mark>
+          &lt;/head>
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Абсолютные пути</h2>
+      <p>Абсолютный путь – полный путь до конкретного файла на сервере. Должен начинаться с указания протокола (<code>http://</code>). Вы идете в незнакомое место, но у вас есть точный адрес.</p>
+      <p>Пример: <code>&lt;a <mark>href="http://netology.ru/"</mark>>Нетология&lt;/a></code></p>
+    </section>
+
+    <section class="slide">
+      <h2>Относительные пути</h2>
+      <p>Относительный путь – указывает расположение файла относительно текущей позиции. Чтобы из дома дойти до булочной нужно пройти два дома и повернуть направо. Если вы находитесь не дома, то подобные указания уведут вас в другое место.</p>
+      <p>Примеры:</p>
+    <ul>
+      <li>Файлы находятся в одной папке: <br><code>&lt;a <mark>href="style.css"</mark>>Стили&lt;/a></code></li>
+      <li>Файл находится выше уровнем: <br><code>&lt;a <mark>href="../style.css"</mark>>Стили&lt;/a></code></li>
+      <li>Файл находится во вложенной папке: <br> <code>&lt;a <mark>href="css/style.css"</mark>>Стили&lt;/a></code></li>
+    </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Основные стили страницы</h2>
+      <p>Пишем общие для всей страницы стили:</p>
+      <pre><code class="language-css line-numbers">
+        html, body {
+          margin: 0;
+          max-width: 100%;
+          height: 100%;
+          overflow: hidden;
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2>Принцип каскада</h2>
+      <p>Основным принципом в CSS является <b>принцип каскада</b>.</p>
+      <p>В CSS каждому правилу назначается приоритет. При обработке нескольких одинаковых правил конечным является правило с наибольшим приоритетом.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Приоритет стилей</h2>
+      <p>Правила сортировки:</p>
+      <ol>
+        <li>Определяется приоритет таблицы стилей
+        <ol>
+          <li>Стили браузера по умолчанию</li>
+          <li>Пользовательские стили</li>
+          <li>Стили страницы, подключенные через <code>&lt;link></code></li>
+          <li>Стили страницы, расположенные между <code>&lt;style> &lt;/style></code></li>
+          <li>Стили тега, прописанные в атрибуте <code>style=""</code></li>
+          <li>Стили с пометкой <code>!important</code></li>
+        </ol></li>
+        <li>Определяется специфичность селектора</li>
+      </ol>
+    </section>
+
+    <section class="slide">
+      <h2>Задача</h2>
+      <p>У нас есть несколько правил для одного и того же элемента:</p>
+      <ul>
+        <li>В файле <code>main.css</code> <br> <code>p {color:blue;}</code></li>
+        <li>В HTML-разметке <br> <code>&lt;style>p {color:red;}&lt;/style></code></li>
+        <li>В атрибуте тега <br> <code>&lt;p style="color:green;">&lt;/p></code></li>
+      </ul>
+      <p>Какого цвета будет абзац?</p>
+    </section>
+
+    <section class="slide">
+      <h2>Специфичность</h2>
+      <p>Специфичность селектора принято исчислять в баллах:</p>
+      <ul>
+        <li>За каждый <code>id</code> – <b>100 баллов</b></li>
+        <li>За каждый класс – <b>10 баллов</b></li>
+        <li>За каждый тег – <b>1 балл</b></li>
+      </ul>
+      <table>
+        <tr>
+          <th>Селектор</th>
+          <th>Специфичность</th>
+        </tr>
+        <tr>
+          <td><code>#my p#id</code></td>
+          <td>201 балл</td>
+        </tr>
+        <tr>
+          <td><code>#my #id</code></td>
+          <td>200 баллов</td>
+        </tr>
+        <tr>
+          <td><code>#my p</code></td>
+          <td>101 балл</td>
+        </tr>
+        <tr>
+          <td><code>.wrapper .content p</code></td>
+          <td>21 балл</td>
+        </tr>
+        <tr>
+          <td><code>.content p</code></td>
+          <td>11 баллов</td>
+        </tr>
+      </table>
+    </section>
+
+    <section class="slide">
+      <h2>Блочная модель</h2>
+      <p>Любой блочный элемент состоит из нескольких <i>слоев</i> свойств, накладывающихся друг на друга. Основой всему служит контент (текст, изображение и др.). Управлять размерами контента можно при помощи <code>width</code> (ширина) и <code>height</code> (высота).</p>
+      <p>Дальше идут внутренние отступы – <code>padding</code>. При помощи этого свойства создаются пустые поля от края контента до внутреннего края границ.</p>
+      <p>Следующий слой это граница (<code>border</code>).</p>
+      <p>И в заключении внешние отступы блока – <code>margin</code>. Это свойство отвечает за пустое пространство вокруг элемента.</p>
+      <p>Ни один из этих слоев не является обязательным, даже контент.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Блочная модель</h2>
+      <img src="pic/box-model.png" alt="" style="display: block; margin: auto; width: 60%">
+    </section>
+
+    <section class="slide">
+      <h2>Стили для родителя</h2>
+      <p>Пишем стили для родительского элемена <code>main</code>.</p>
+      <pre><code class="language-css line-numbers">
+        main {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          width: 100vw;
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2>Flexbox</h2>
+      <p>Главная задумка flexbox (англ. «гибкий блок») в наделении контейнера способностью изменять ширину/высоту (и порядок) своих элементов для наилучшего заполнения пространства (в большинстве случаев — для поддержки всех видов дисплеев и размеров экранов). Flex-контейнер растягивает элементы для заполнения свободного места или сжимает их, чтобы предотвратить выход за границы. Это более эффективный способ вёрстки, выравнивания и распределения свободного места между элементами в контейнере, даже когда их размер неизвестен и/или динамический (отсюда слово «гибкий»).</p>
+    </section>
+
+    <section class="slide">
+      <h2>Flexbox</h2>
+      <p>Почитать:</p>
+      <ul>
+        <li><a href="http://frontender.info/a-guide-to-flexbox/">Полное руководство по Flexbox</a></li>
+        <li><a href="https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties">A Visual Guide to CSS3 Flexbox Properties</a></li>
+        <li><a href="http://cssmine.com/ebook/flexbox-examples">Flexbox: Practical Examples</a></li>
+      </ul>
+      <p>Посмотреть:</p>
+      <ul>
+        <li><a href="http://flexboxfroggy.com/">Flexbox froggy</a></li>
+        <li><a href="http://www.flexboxdefense.com/">Flexbox defense</a></li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Единицы измерения <code>vw/vh</code></h2>
+      <p>С помощью <code>vw/vh</code> можно устанавливать размер элементов относительно размера окна брузера. Единицы <code>vw/vh</code> интересны тем, что <code>1vw</code> — единица равная 1/100'ой ширины окна браузера. Что бы присвоить элементу ширину, равную ширине окна, например, надо установить <code>width:100vw</code>.<br> <code>vh</code> в свою очередь зависит от высоты окна.</p>
+      <p>Почитать: <a href="http://front-end.su/2015/10/07/viewport-units-vs-percent/">Единицы viewport против процентов</a></p>
+    </section>
+
+    <section class="slide">
+      <h2>Стили для секций</h2>
+      <pre><code class="language-css line-numbers">
+        section {
+          position: relative;
+          height: 100%;
+          align-items: center;
+          justify-content: center;
+          box-sizing: border-box;
+          text-align: center;
+          flex: 1;
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2>Оформляем текстовые блоки</h2>
+      <pre><code class="language-css line-numbers">
+        .cont_title {
+          position: relative;
+          margin: auto;
+          width: 100%;
+          height: 300px;
+          text-align: center;
+          margin-top: 5vh;
+        }
+
+        .cont_title h2 {
+          text-transform: uppercase;
+          font-size: 3.5vw;
+          margin: 0;
+          vertical-align: middle;
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2>Оформляем текстовые блоки</h2>
+      <pre><code class="language-css line-numbers">
+        .cont_title h3 {
+          text-transform: uppercase;
+          font-size: 1.3vw;
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2>Оформляем текстовые блоки</h2>
+      <pre><code class="language-css line-numbers">
+        .cont_desc {
+          position: relative;
+          display: block;
+          text-align: center;
+          width: 100%;
+          height: auto;
+          margin: auto;
+          padding: 30px 15%;
+          box-sizing: border-box;
+        }
+
+        .cont_desc p {
+          margin: 0;
+          font-size: 20px;
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2>Оформляем текстовые блоки</h2>
+      <p>Размер текста задаем в относительных единицах измерения. Таким образом текст будет изменяться пропорционально размеру экрана и всегда будет отлично выглядеть.</p>
+    </section>
+
+    <section class="slide chapter">
+      <img src="pic/cat.jpg" alt="">
+      <h2>Магия</h2>
+    </section>
+
+    <section class="slide">
+      <h2><code>:hover</code></h2>
+      <p>Псевдокласс <code>:hover</code> определяет стиль элемента когда на него наведен курсор. Может быть задан любому элементу.</p>
+      <img src="pic/hover.png" alt="">
+    </section>
+
+    <section class="slide">
+      <h2>Шорткат <code>flex</code></h2>
+      <p><b>Шорткатом</b> называют короткое свойство, объединяющее несколько значений.</p>
+      <code>flex: <'flex-grow'> <'flex-shrink'> <'flex-basis'></code>
+      <p>В нашем случае мы будем изменять значение свойства <code>flex-grow</code>.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Увеличиваем секцию</h2>
+      <p>По наведению курсора мыши значение свойства <code>flex-grow</code> будет изменяться с <code>1</code> на <code>1.8</code>.</p>
+      <pre><code class="language-css line-numbers">
+        section:hover {
+          <mark>flex: 1.8;</mark>
+          transition: flex 0.4s;
+        }
+      </code></pre>
+      <p>Свойство <code>transition</code> указывает, что изменение будет происходить плавно в течении 4 десятых секунды.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Увеличиваем текст</h2>
+      <p>Размер текста также должен меняться по наведению мыши на секцию.</p>
+      <pre><code class="language-css line-numbers">
+        section:hover > .cont_title h2 {
+          <mark>font-size: 5vw;</mark>
+          transition: font-size 0.4s;
+        }
+
+        section:hover > .cont_title h3 {
+          <mark>font-size: 1.5vw;</mark>
+          transition: all 0.4s;
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2>Прячем описание</h2>
+      <p>Чтобы описание не перекрывало красивую картинку спрячем его. И будем показывать только при наведении курсора на секцию. Добавим в изначальные стили для селектора <code>.cont_desc</code> свойство <code>opacity</code> со значением <code>0</code> – это сделает текст невидимым. И напишем правила, которые будут делать текст видимым при наведении курсора.</p>
+      <pre><code class="language-css line-numbers">
+        .cont_desc {
+          <mark>opacity: 0;</mark>
+        }
+
+        section:hover > .cont_desc {
+          <mark>opacity: 1;</mark>
+          <i>transition-delay: 0.5s;</i>
+          transition: opacity 0.8s;
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2>Задаем фоны</h2>
+      <p>Зададим каждой из секций классы с именами героев и пропишем фоновые картинки. Повторяющиеся свойства вынесем в блок со стилями для <code>section</code>.</p>
+      <pre><code class="language-css line-numbers">
+        section {
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+        }
+
+        .homer {
+          background-image: url("pic1.jpg");
+        }
+
+        .marge {
+          background-image: url("pic2.jpg");
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2>Задаем фоны</h2>
+      <pre><code class="language-css line-numbers">
+        .bart {
+          background-image: url("pic3.jpg");
+        }
+
+        .lisa {
+          background-image: url("pic4.jpg");
+        }
+
+        .maggie {
+          background-image: url("pic5.jpg");
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2>Меняем шрифт</h2>
+      <p>В html-разметке между <code>&lt;head></code> и <code>&lt;/head></code> подключаем новый шрифт.</p>
+      <pre><code class="language-html">
+        &lt;link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&subset=cyrillic" rel="stylesheet">
+      </code></pre>
+      <p class="note">Сервис для выбора шрифтов: <a href="https://fonts.google.com/">Google Fonts</a></p>
+    </section>
+
+    <section class="slide">
+      <h2>Меняем цвет текста</h2>
+      <p>В таблице стилей меняем шрифт на новый и изменяем цвет текста, добавляем тень.</p>
+      <pre><code class="language-css line-numbers">
+        .cont_title h2 {
+          font-family: 'Roboto Condensed', sans-serif;
+          color: #FFD90F;
+          text-shadow: 1px 2px 5px rgba(11,118,224, 0.5);
+        }
+
+        .cont_title h3 {
+        	font-family: 'Roboto Condensed', sans-serif;
+        	color: #0B76E0;
+        	text-shadow: 1px 2px 5px rgba(255,217,15, 0.5);
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2>Меняем цвет текста</h2>
+      <pre><code class="language-css line-numbers">
+        .cont_desc p {
+        	font-family: 'Roboto Condensed', sans-serif;
+        	color: #000000;
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2>Цветной фон для описания</h2>
+      <p>Зададим цветной фон для нижнего текста чтобы он хорошо читался на фоне картинок.</p>
+      <pre><code class="language-css line-numbers">
+        .cont_desc {
+          background-color: rgba(255,217,15, 0.8);
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2>Затемняем неактивные секции</h2>
+      <p>Все плашки кроме той, над которой находится курсор, будут затемняться. Для этого используем свойство <code>filter</code> со значением <code>brightness(x%)</code>.</p>
+      <pre><code class="language-css line-numbers">
+        main:hover > section {
+          filter: brightness(22%);
+        }
+
+        main:hover > section:hover {
+          filter: brightness(100%);
+        }
+
+        section {
+          transition: all 0.4s;
+        }
+      </code></pre>
+    </section>
+
+    <section class="slide">
+      <h2><code>filter</code></h2>
+      <p>Свойство <code>filter</code> применяет художественный эффект или их сочетание к элементу. К фильтрам относится изменение прозрачности, добавление тени, трансформация и др.</p>
+      <a href="https://css-tricks.com/almanac/properties/f/filter/">Читать подробнее</a>
+      <p class="note">Проверяйте поддержку в старых браузерах!</p>
+    </section>
+
+    <section class="slide last">
+      <p class="thanx">Ждем вас на программе <br> <a href="http://netology.ru/programs/html-verstka">HTML-верстка: с нуля до первого макета</a></p>
+      <address>Вячеслав Крысин</address>
+      <ul class="contacts">
+        <li><a href="mailto:v.krysin@netology-group.ru"><i class="fa fa-envelope-o" aria-hidden="true"></i>v.krysin@netology-group.ru</a></li>
+      </ul>
+    </section>
+
+    <div class="progress"></div>
+    <script src="/node_modules/shower-core/shower.min.js"></script>
+    <script src="/common/js/prism.js?v=2"></script>
+    <script src="https://use.fontawesome.com/30b5a52164.js"></script>
+  </body>
+</html>

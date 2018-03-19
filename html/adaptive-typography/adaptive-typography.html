@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <title>Создание адаптивной типографики на сайте для разных устройств</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../node_modules/shower-ribbon/styles/screen-4x3.css">
+  <link rel="stylesheet" href="../../common/css/prism.css">
+  <link rel="stylesheet" href="../../common/css/prism-fix.css">
+  <link rel="stylesheet" href="../../common/css/netology.css">
+  <link rel="stylesheet" href="../../common/css/fake-browser.css">
+  <link rel="shortcut icon" href="../../common/i/favicon.ico" type="image/x-icon">
+</head>
+<body class="shower list">
+  <header class="caption">
+    <h1>Создание адаптивной типографики на сайте для разных устройств</h1>
+    <p>Татьяна Тен, Webcoalition.ru</p>
+  </header>
+
+  <section class="slide" id="cover">
+    <h2>Создание адаптивной типографики на сайте для разных устройств</h2>
+    <p>
+      <img src="../../common/pic/authors/tten.jpg" alt="" class="avatar">
+      Татьяна Тен <span class="position">Webcoalition.ru</span>
+    </p>
+  </section>
+  <section class="slide author" id="author">
+    <img src="../../common/pic/authors/tten.jpg" alt="">
+    <h1>Татьяна Тен</h1>
+    <p class="position">Front-End разработчик в Webcoalition.ru</p>
+    <ul class="contacts">
+      <li><a href="mailto:tt@webcoalition.ru"><i class="fa fa-envelope-o" aria-hidden="true"></i>tt@webcoalition.ru</a></li>
+      <li><a href="https://fb.me/tanya.ten10"><i class="fa fa-facebook" aria-hidden="true"></i>fb.me/tanya.ten10</a></li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Адаптивная верстка</h2>
+    <p>
+      На сегодняшний день верстку приходится адаптировать для самых разных устройств, большую долю которых занимают мобильные телефоны, планшеты и компьютеры. Главная задача современного веб-интерфейса — быть удобным для пользователя любого устройства, и в первую очередь это касается текста. Он должен хорошо читаться с экрана.
+    </p>
+  </section>
+
+  <section class="slide">
+    <h2>Пример</h2>  
+    <p>
+      Рассмотрим пример первого экрана главной страницы интернет-магазина мотоциклов с заголовком, текстовым блоком и кнопкой-ссылкой:
+    </p>
+    <pre>
+      <code class="language-html line-numbers">
+&#060;section class="hero container">
+  &#060;header>
+    &#060;h2>Welcome to The Motorbikes Shop&#060;/h2>
+  &#060;/header>
+  &#060;p>The Motorbike Shop is the South’s leading Premier Yamaha Dealer.
+          We are a privately owned business based in Hampshire, offering the highest levels of service and expertise,
+          whether you are looking to purchase a new Yamaha, a used motorcycle, or to service and maintain your current motorcycle.&#060;/p>
+  &#060;div class="actions">
+  &#060;a href="#" class="button">Get this party started&#060;/a>
+  &#060;/div>
+&#060;/section>
+      </code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Добавляем стили</h2>
+    <p>
+      Зададим размеры надписей на странице в пикселах:
+    </p>
+    <pre>
+      <code class="language-css line-numbers">
+        body {
+          font-size: 20px;
+      }
+      
+      h2 {
+          line-height: 1.25;
+          font-size: 60px;
+      }
+      
+      .button {
+          font-size: 30px;
+      }
+      </code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Результат</h2>
+    <figcaption>
+      На экране ноутбука верстка выглядит таким образом:
+    </figcaption> 
+    <figure>
+        <img src="pic/moto_desktop.png" alt="#">
+    </figure>
+  </section>
+  
+  <section class="slide">
+    <h2>Результат на разных устройствах</h2>
+    <p>
+      Но если протестировать верстку на планшете и мобильном телефоне, получается не совсем то, что мы ожидали:
+    </p>
+    <div class="double">
+    <figure class="place left" style="width: 40%; margin: 5% 0 0 10%;">
+      <img src="pic/moto_tablet.png" alt="#">
+      <figcaption>Верстка на IPad</figcaption>
+    </figure>
+      
+    <figure class="place right" style="width: 34%; margin: 5% 10% 0 0;">
+      <img src="pic/moto_mobile.png" alt="#">
+      <figcaption>Верстка на IPhone</figcaption>
+    </figure>
+  </div>
+  </section>
+
+  <section class="slide">
+    <h2>Медиа-запрос</h2>
+    <p>  
+      Чтобы сообщить браузеру, какой размер шрифта ему нужно использовать при какой ширине окна браузера, воспользуемся медиа-запросами CSS.
+    </p>
+    <pre>
+      <code class="language-css line-numbers">
+        @media (width: 600px) { 
+          body {
+            font-size: 11px;
+          }
+        }
+      </code>
+    </pre>
+    <p>
+      Этот код сообщит браузеру, что ему нужно установить размер шрифта для  body, равный 14px тогда и только тогда, когда ширина области просмотра (т.е. ширина окна браузера) будет равна 600px.
+    </p>
+  </section>
+
+  <section class="slide">
+    <h2><code>min-</code> и <code>max-</code></h2>
+    <pre>
+      <code class="language-css line-numbers">
+        @media (min-width: 600px) { 
+          body{
+            font-size: 14px;
+          }
+        }
+      </code>
+    </pre>
+    <p>
+      Область просмотра больше или равна 600px.
+    </p>
+    <pre>
+      <code class="language-css line-numbers">
+        @media (max-width: 600px) { 
+          body{
+            font-size: 11px;
+          }
+        }
+      </code>
+    </pre>
+    <p>
+      Область просмотра меньше или равна 600px.
+    </p>
+  </section>
+
+  <section class="slide">
+    <h2>Результат</h2>
+    <pre>
+      <code class="language-css line-numbers">
+        h2 {
+          line-height: 1.25;
+      }
+      
+      @media (max-width: 599px) { // для мобильного телефона
+        body {
+            font-size: 11px;
+        }
+        
+        h2 {
+            font-size: 34px;
+        }
+      </code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <pre>
+      <code class="language-css line-numbers">      
+          .button {
+            font-size: 17px;
+        }
+      }
+        @media (min-width: 1200px){ // для ноутбука
+          body {
+              font-size: 20px;
+          }
+          
+          h2 {
+              font-size: 60px;
+          }
+          
+          .button {
+              font-size: 30px;
+          }
+        }
+      </code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Стили для планшета</h2>
+    <p>
+      Для для отрезка <code>600px</code> - <code>1199px</code> мы запишем более сложный медиа-запрос. Чтобы объединить два условия — “больше 600px” и “меньше или равно 1199px” мы будем использовать логическое <code>and</code> в медиа-запросе:
+    </p>
+    <code class="language-css line-numbers">
+      @media (min-width: 600px) and (max-width: 1199px)
+    </code>
+    <p>
+      Стили из такого запроса будут применяться только тогда, когда ширина области просмотра будет находиться в диапазоне от 600px до 1199px, то есть, когда оба условия будут выполняться одновременно.
+    </p>
+  </section>
+
+  <section class="slide">
+    <h2>Размеры шрифта для планшета</h2>
+    <pre>
+      <code class="language-css line-numbers">
+        @media (min-width: 600px) and (max-width: 1199px){ // стили для планшета
+          body {
+                font-size: 14px;
+            }
+              
+          h2 {
+              font-size: 42px;
+          }
+            
+          .button {
+              font-size: 21px;
+          }  
+        }
+      </code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Результат</h2>
+    <pre>
+      <code class="language-css line-numbers">
+        h2 {
+          line-height: 1.25;
+        }
+        
+        @media (max-width: 599px) { // для мобильного телефона
+          body {
+              font-size: 11px;
+          }
+          
+          h2 {
+              font-size: 34px;
+          }
+      </code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <pre>
+      <code class="language-css line-numbers">         
+      .button {
+        font-size: 17px;
+        }
+      }
+      @media (min-width: 1200px){ // для ноутбука
+        body {
+            font-size: 20px;
+        }
+            
+        h2 {
+            font-size: 60px;
+            }
+        
+        .button {
+            font-size: 30px;
+          }
+       }
+      </code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <pre>
+      <code class="language-css line-numbers">
+      @media (min-width: 600px) and (max-width: 1199px){ // для планшета
+        body {
+              font-size: 14px;
+          }
+              
+        h2 {
+            font-size: 42px;
+          }
+            
+        .button {
+            font-size: 21px;
+        }  
+      }
+      </code>
+    </pre>
+  </section>
+  
+  <section class="slide">
+    <h2>Проверяем полученный результат</h2>
+    <p>
+      Посмотрим, как выглядит верстка на разных устройствах. На ноутбуке ничего не изменилось, однако на планшете и мобильном телефоне все стало выглядеть намного лучше:
+    </p>
+    <div class="double">
+        <figure class="place left" style="width: 40%; margin: 10% 0 0 10%;">
+          <img src="pic/moto_tablet2.png" alt="#">
+          <figcaption>Верстка на IPad</figcaption>
+        </figure>
+          
+        <figure class="place right" style="width: 30%; margin: 10% 10% 0 0;">
+          <img src="pic/moto_mobile2.png" alt="#">
+          <figcaption>Верстка на IPhone</figcaption>
+        </figure>
+      </div>
+  </section>
+
+  <section class="slide">
+    <h2>Используем <code>rem</code> </h2>
+    <blockquote>
+      <p>
+        <b>rem</b> —  «root (корневые) em» —  единицы измерения в CSS, которые позволяют задавать размер шрифта, зависящий от свойства font-size корневого элемента, т.е тега html.
+      </p>
+    </blockquote>
+    <br>
+    <p>
+      Обратим внимание, что дизайнер предусмотрел одинаковые соотношения между размерами шрифтов блоков:
+    </p>
+      Когда слоган, подпись <code>20px</code> и надпись на кнопке <code>30px</code>; потом <code>42px</code>, <code>14px</code> и <code>21px</code> и наконец, <code>~34px</code>, <code>~11px</code> и <code>~17px</code>.
+    </p>
+    <p>    
+      Во всех трех случаях размер заголовка в 3 раза больше размера шрифта текста, а размер шрифта кнопки - в 1,5 раза больше размера шрифта текста.
+    </p>  
+  </section>
+
+  <section class="slide">
+    <h2>Меняем <code>px</code> на <code>rem</code></h2>
+    <pre>
+      <code class="language-css line-numbers">
+          body {
+            font-size: 1rem;
+          }
+            
+          h2 {
+            font-size: 3rem;
+          }
+          
+          .button {
+            font-size: 1.5rem;
+          }
+      </code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Меняем размер шрифта для всех разрешений</h2>
+    <pre>
+      <code class="language-css line-numbers">
+          body {
+            font-size: 1rem;
+          }
+            
+          h2 {
+            font-size: 3rem;
+          }
+          
+          .button {
+            font-size: 1.5rem;
+          }
+      </code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <pre>
+      <code class="language-css line-numbers">
+          @media (max-width: 599px){ // для мобильного телефона
+            html{
+              font-size: 11px;
+            }
+          }
+          @media (min-width: 600px) and (max-width: 1199px){ // для планшета
+            html{
+              font-size: 14px;
+            }
+            }
+          @media (min-width: 1200px){ // для ноутбука
+            html{
+              font-size: 20px;
+            }
+          }
+      </code>
+    </pre>
+  </section>
+  
+  <section class="slide">
+    <h2>Ура! Наш код стал проще.</h2>
+    <p>
+      Можно ли использовать <code>rem</code> где-то ещё, кроме как для задания размера шрифта? Конечно, да, для любых свойств. Давайте укажем верхний и нижний <code>padding</code> контейнера в <code>rem</code>:  
+    </p>
+    <pre>
+      <code class="language-css line-numbers">
+          .header-wrapper{
+            padding-top: 5rem;// вместо 100px
+            padding-bottom: 1rem;//вместо 20px
+      }
+      </code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Проверяем результат</h2>
+    <p>
+      Текст по-прежнему читается отлично, плюс мы сделали отзывчивыми и вертикальные отступы:
+    </p>
+    <div class="double">
+        <figure class="place left" style="width: 40%; margin: 5% 0 0 10%;">
+            <img src="pic/moto_tablet3.png" alt="#">
+            <figcaption>Верстка на IPad</figcaption>
+        </figure>
+        <figure class="place right" style="width: 30%; margin: 5% 10% 0 0;">
+            <img src="pic/moto_mobile3.png" alt="#">
+            <figcaption>Верстка на IPhone</figcaption>
+        </figure>
+      </div>
+  </section>
+
+  <section class="slide">
+    <h2>Делаем текст адаптивным</h2>
+    <p>
+      Изменять надписи плавно нам помогут единицы измерения <code>vw</code> (viewport width). <code>1vw</code> равен 1% от ширины области просмотра.
+    </p>
+    <p>
+      Используем vw для того, чтобы выразить размер шрифта блока <code>html</code>. Попробуем подобрать нужное значение. <code> 1vw</code> в точке <code>1200px</code> равен <code>12px</code>, то есть <code>20px</code> = <code>1.6666vw</code>.
+    </p>
+  </section>
+
+  <section class="slide">
+    <h2>Добавляем <code>vw</code> </h2>
+    <pre>
+      <code class="language-css line-numbers">
+          html{
+            font-size: 1.6666vw;
+          }
+          body {
+            font-size: 1rem;
+          }
+            
+          h2 {
+            font-size: 3rem;
+          }
+          
+          .button {
+            font-size: 1.5rem;
+          }
+      </code>    
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Получаем результаты</h2>
+    <p>
+      При ширине области просмотра <code>1200px</code> на ноутбуке мы получим следующие значения размеров шрифта:
+    </p>
+    <ul>
+      <li><code>60px</code> для заголовка;</li>
+      <li><code>20px</code> для текста;</li>
+      <li><code>30px</code> для кнопки.</li>
+    </ul>
+    <p>
+      А на планшете с шириной области просмотра <code>600px</code> значения станут равны:
+    </p>
+    <ul>
+      <li><code>30px</code> для заголовка;</li>
+      <li><code>10px</code> для текста;</li>
+      <li><code>15px</code> для кнопки.</li>
+    </ul>
+    <p>
+      Но это не те значения, которые нам нужны. Как же быть?
+    </p>
+  </section>
+
+  <section class="slide">
+    <h2>Соотношение размеров</h2>
+    <p>
+      Посмотрим внимательнее на соотношение <code>1vw</code> и нужного нам размера шрифта для <code>html</code>:
+    </p>
+    <table>
+      <tr>
+        <th>1vw</th>
+        <th>font-size</th>
+      </tr>
+      <tr>
+        <td><code>3.2px</code> (телефон)</td>
+        <td><code>~11px</code></td>
+      </tr>
+      <tr>
+        <td><code>6px</code> (планшет)</td>
+        <td><code>14px</code></td>
+      </tr>
+      <tr>
+        <td><code>12px</code> (ноутбук)</td>
+        <td><code>20px</code></td>
+      </tr>
+    </table>
+    <p>
+      Получается, что нужный нам размер шрифта всегда больше, чем <code>1vw</code> на <code>8px</code>!
+    </p>
+  </section>
+
+  <section class="slide">
+    <h2>Добавляем <code>calc</code> </h2>
+    <p>
+      Теперь нам останется только записать эту формулу на языке CSS. Однако, это не так-то просто: сам по себе CSS не умеет выполнять арифметические действия. А чтобы вычислить сумму <code>8px + 1vw</code>, используем функцию calc:
+    </p>
+    <pre>
+      <code class="language-css">
+          html{
+            font-size: calc(8px + 1vw);
+          }
+      </code>
+    </pre>
+    <p>
+        Все работает отлично. Теперь во всех трех случаях у нас нужный размер шрифта, а также можно убедиться, что при сужении окна браузера размер шрифта плавно меняется, то есть надписи стали адаптивными.
+    </p>
+  </section>
+
+  <section class="slide">
+    <h2>Но есть один нюанс</h2>
+    <p>
+      При такой записи для font-size пользователь совершенно не сможет управлять размером шрифта. Попробуем зайти в настройки браузера Google Chrome и увеличить шрифт:
+    </p>
+    <figure>
+      <img src="pic/desktop.png" alt="#">
+    </figure> 
+  </section>
+
+  <section class="slide">
+    <h2>Проверяем результат</h2>
+    <p>
+      Как мы видим, ничего не поменялось:
+    </p>
+    <figure>
+      <img src="pic/moto_desktop4.png" alt="#">
+    </figure> 
+  </section>
+
+  <section class="slide">
+    <h2>Добавим Accessibility</h2>
+    <p>
+      Это плохо, потому что те пользователи, которые установили в настройках увеличение шрифта, получат стандартный размер шрифта на нашей страничке. Как же устранить этот недостаток кода?
+    </p>
+    <p>
+      Повлиять на величину <code>1vw</code> мы не можем, эта единица зависит только от ширины области просмотра. Но у нас есть часть <code>8px</code>, и именно она выручит нас.
+    </p>
+    <p>
+      По умолчанию в каждом браузере есть некоторое стандартное значение для <code>font-size</code>. Действительно, если мы откроем нашу разметку, отключив стили, текст не станет невидимым (его размер будет не 0). И это стандартное значение размера шрифта принимается за 100% и записывается как <code>font-size: 100%</code>. 
+    </p>
+  </section>
+
+  <section class="slide">
+    <h2>Используем % в <code>calc</code></h2>
+    <p>
+      При этом если у пользователя стандартный размер шрифта браузера, это значение будет равно <code>16px</code> (а например, если выбрать "большой", то будет равно <code>20px</code>).<br>Если <code>16px</code> это 100%, то нужные нам для нашей задачи <code>8px</code> как 50%. И тогда наша формула примет вид:
+    </p>
+    <pre>
+      <code class="language-css">
+        html{
+          font-size: calc(50% + 1vw);
+        }
+      </code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Проверяем результат</h2>
+    <p>
+      Проверим, влияет ли настройка пользователя теперь на наш размер шрифта:
+    </p>
+    <div class="double">
+      <figure class="place left" style="width: 40%; margin: 5% ;">
+        <img src="pic/moto_desktop3.png" alt="#">
+      </figure>
+      <figure class="place right" style="width: 40%; margin: 5%;">
+        <img src="pic/moto_desktop4.png" alt="#">
+      </figure>
+    </div>
+    <p>
+      Теперь нашу страничку будет удобно читать и пользователям с измененным размером шрифта в браузере.
+    </p>
+  </section>  
+    
+  <section class="slide last">
+    <p class="thanx">Задавайте вопросы и напишите отзыв о лекции!</p>
+    <address>Татьяна Тен</address>
+    <ul class="contacts">
+      <li><a href="mailto:tt@webcoalition.ru"><i class="fa fa-envelope-o" aria-hidden="true"></i>tt@webcoalition.ru</a></li>
+      <li><a href="https://fb.me/tanya.ten10"><i class="fa fa-facebook" aria-hidden="true"></i>fb.me/tanya.ten10</a></li>
+    </ul>
+  </section>
+  <div class="progress"></div>
+  <script src="../../node_modules/shower-core/shower.min.js"></script>
+  <script src="../../common/js/prism.js?v=2"></script>
+  <script src="https://use.fontawesome.com/30b5a52164.js"></script>
+</body>
+</html>

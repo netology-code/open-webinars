@@ -1,0 +1,25 @@
+{
+  "name": "neto-free-lessons",
+  "version": "1.0.0",
+  "description": "Материалы для бесплатных занятий в университете Нетология",
+  "main": "index.html",
+  "scripts": {
+    "start": "browser-sync start --server --files '**/*.html' '**/*.css' '**/*.js' '**/*.png' '**/*.jpeg' '**/*.jpg'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/netology-university/open-webinars.git"
+  },
+  "keywords": [],
+  "author": "Dima Fitiskin <dfitiskin@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://bitbucket.org/netology-university/open-webinars#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.7"
+  },
+  "dependencies": {
+    "shower-core": "^2.0.8",
+    "shower-ribbon": "^2.0.10"
+  }
+}

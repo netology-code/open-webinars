@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>Пишем чистый JavaScript код</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/node_modules/shower-ribbon/styles/screen-4x3.css">
+    <link rel="stylesheet" href="/common/css/prism.css">
+    <link rel="stylesheet" href="/common/css/prism-fix.css">
+    <link rel="stylesheet" href="/common/css/netology.css">
+    <link rel="stylesheet" href="./css/example-type.css">
+  </head>
+  <body class="shower">
+    <header class="caption">
+      <h1>Пишем чистый JavaScript код</h1>
+      <p>Дима Фитискин, Нетология</p>
+    </header>
+
+    <section class="slide" id="cover">
+      <h2>Пишем чистый JavaScript код</h2>
+      <p>
+        <img src="/common/pic/authors/dfitiskin.jpg" alt="" class="avatar">
+        Дима Фитискин <span class="position">Нетология</span>
+      </p>
+    </section>
+
+    <section class="slide author" id="author">
+      <img src="/common/pic/authors/dfitiskin.jpg" alt="Дима Фитискин">
+      <h1>Дима Фитискин</h1>
+      <p class="position">Руковожу курсами по программированию в Нетологии</p>
+      <ul class="contacts">
+        <li><a href="mailto:dfitiskin@gmail.ru"><i class="fa fa-envelope-o" aria-hidden="true"></i>dfitiskin@gmail.ru</a></li>
+        <li><a href="skype:dfitiskin?call"><i class="fa fa-skype" aria-hidden="true"></i>dfitiskin</a></li>
+        <li><a href="https://fb.me/dfitiskin"><i class="fa fa-facebook" aria-hidden="true"></i>fb.me/dfitiskin</a></li>
+      </ul>
+    </section>
+
+    <section class="slide chapter" id="programm">
+      <h2><a href="http://netology.ru/free-lessons/dev-javascript-consultation-060317">Консультация по курсу JavaScript</a></h2>
+      <h3>6 марта</h3>
+      <style>
+        #programm {
+          background: url(/common/i/cover.svg) no-repeat center bottom / contain;
+          background-color: #5a5a91;
+        }
+
+        #programm * {
+          color: #fff;
+          font-weight: 900;
+          text-align: center;
+        }
+
+        #programm a {
+          background: none;
+        }
+
+        #programm h2:before {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        #programm h3 {
+          font-size: 64px;
+          color: #f3f3f3;
+        }
+      </style>
+    </section>
+
+    <section class="slide chapter">
+      <h2>Почему это важно</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Причины писать чистый код</h2>
+      <ul>
+        <li>Программист больше читает кода чем пишет.</li>
+        <li>Много читает чужего кода, даже если работает над проектом один.</li>
+        <li>Код над которым вы давно не работали можно приравнять к чужому. Его писал другой человек — вы из прошлого.</li>
+        <li>Проекты имеют свойство развиваться.</li>
+        <li>Скорость чтения и понимания прямо влияет на скорость развития проекта.</li>
+      </ul>
+    </section>
+
+    <section class="slide chapter">
+      <h2>Форматирование кода</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Регистр символов в названиях</h2>
+      <p>Шашлычный регистр в JavaScript использовать нельзя:</p>
+      <pre class="example-ugly">
+        <code class="language-javascript">
+          let user-name = 'Иван';
+        </code>
+      </pre>
+      <p>Змеиный регистр некрасиво:</p>
+      <pre class="example-weak">
+        <code class="language-javascript">
+          let user_name = 'Иван';
+        </code>
+      </pre>
+      <p>Верблюжий регистр не принято:</p>
+      <pre class="example-weak">
+        <code class="language-javascript">
+          let UserName = 'Иван';
+        </code>
+      </pre>
+      <p>Нижний верблюжий регистр — выбор большинства:</p>
+      <pre class="example-good">
+        <code class="language-javascript">
+          let userName = 'Иван';
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Названия констант</h2>
+      <p>Нужно выделять в общем коде, поэтому общий подход не годится:</p>
+      <pre class="example-weak">
+        <code class="language-javascript line-numbers">
+          const daysInWeek = 7;
+          const daysInMonth = 30;
+          let period = 73;
+          let weeks = Math.ceil(period / daysInWeek);
+          let months = Math.ceil(period / daysInMonth);
+        </code>
+      </pre>
+      <p>Оформляем заглавными буквами в змеином регистре:</p>
+      <pre class="example-good">
+        <code class="language-javascript line-numbers">
+          const DAYS_IN_WEEK = 7;
+          const DAYS_IN_MONTH = 30;
+          let period = 73;
+          let weeks = Math.ceil(period / DAYS_IN_WEEK);
+          let months = Math.ceil(period / DAYS_IN_MONTH);
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Имена классов и конструкторов</h2>
+      <p>Используются с оператором <code>new</code>, и нет смысла давать им глагольные названия:</p>
+      <pre class="example-ugly">
+        <code class="language-javascript line-numbers">
+          class createShape {}
+          function createUser() {}
+          let circle = new createShape();
+          let user = new createUser();
+        </code>
+      </pre>
+      <p>Называем их существительным и название даём в верхнем верблюжем регистре, для совместимости с встроенными классами:</p>
+      <pre class="example-good">
+        <code class="language-javascript line-numbers">
+          class Shape {}
+          function User() {}
+          let circle = new Shape();
+          let user = new User();
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Пробел между названием функции и скобками</h2>
+      <p>При создании и при вызове функции пробел после названия «разрывает» связь с аргументами:</p>
+      <pre class="example-ugly">
+        <code class="language-javascript line-numbers show-invisible">
+          function getNextSunday (date) {}
+          let current = getNextSunday (new Date);
+        </code>
+      </pre>
+      <p>По соглашению функции пишем без пробела перед аргументами:</p>
+      <pre class="example-good">
+        <code class="language-javascript line-numbers show-invisible">
+          function getNextSunday(date) {}
+          let current = getNextSunday(new Date);
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Анонимные функции</h2>
+      <p>Просто нет имени, но пробел после <code>function</code> не часть имени:</p>
+      <pre class="example-ugly">
+        <code class="language-javascript line-numbers show-invisible">
+          const isOdd = function(number) {
+            return number % 2 === 1;
+          };
+        </code>
+      </pre>
+
+      <p>Пробел между <code>function</code> и «именем» никуда не должен пропадать:</p>
+      <pre>
+        <code class="language-javascript line-numbers show-invisible">
+          const isOdd = function (number) {
+            return number % 2 === 1;
+          };
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Пробел между оператором и скобками</h2>
+      <p>Если не ставить пробел после оператора <code>if</code> или <code>for</code>, то их можно перепутать с вызовом функции:</p>
+      <pre class="example-weak">
+        <code class="language-javascript line-numbers show-invisible">
+          if(!isSunday(current)) {
+            current = getNextSunday(current);
+          }
+        </code>
+      </pre>
+      <p>Поэтому рекомендую ставить пробел:</p>
+      <pre class="example-good">
+        <code class="language-javascript line-numbers show-invisible">
+          if (!isSunday(current)) {
+            current = getNextSunday(current);
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Блоки кода</h2>
+      <p>Расстановка фигурных скобок — вопрос религии. Это php-конфессия:</p>
+      <pre class="example-ugly">
+        <code class="language-javascript line-numbers">
+          if (!isSunday(current))
+          {
+            current = getNextSunday(current);
+          }
+        </code>
+      </pre>
+      <p>Так пишут атеисты:</p>
+      <pre class="example-ugly">
+        <code class="language-javascript line-numbers">
+          if (!isSunday(current)) {
+            current = getNextSunday(current);}
+        </code>
+      </pre>
+      <p>А вот так принято в JavaScript:</p>
+      <pre class="example-good">
+        <code class="language-javascript line-numbers">
+          if (!isSunday(current)) {
+            current = getNextSunday(current);
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Точки с запятой</h2>
+      <p>Можно не ставить точки с запятой и осваивать особенности <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Automatic_semicolon_insertion" title="Automatic semicolon insertion">ASI</a>:</p>
+      <pre class="example-ugly">
+        <code class="language-javascript line-numbers">
+          function sum(a, b) {
+            return
+            a + b
+          }
+        </code>
+      </pre>
+      <p>А можно расставлять точки и всегда иметь гарантированный результат:</p>
+      <pre class="example-good">
+        <code class="language-javascript line-numbers">
+          function sum(a, b) {
+            return a + b;
+          }
+        </code>
+      </pre>
+      <p>А еще записывать выражение в одну строку.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Ставить <code>;</code></h2>
+      <pre class="example-ugly">
+        <code class="language-javascript line-numbers">
+          var isOdd = function () {}
+          var user = { name: 'Иван', age: 92 }
+        </code>
+      </pre>
+      <p>После <code>}</code> при создании функционального выражения или объекта:</p>
+      <pre class="example-good">
+        <code class="language-javascript line-numbers">
+          var isOdd = function () {};
+          var user = { name: 'Иван', age: 92 };
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Не ставить <code>;</code></h2>
+      <pre class="example-ugly">
+        <code class="language-javascript line-numbers">
+          function sum(a, b) {};
+          if (!isSunday(current)) {
+            current = getNextSunday(current);
+          };
+        </code>
+      </pre>
+      <p>После <code>}</code> при создании функции или блока кода в <code>if</code>, <code>while</code>, <code>for</code>:</p>
+      <pre class="example-good">
+        <code class="language-javascript line-numbers">
+          function sum(a, b) {}
+          if (!isSunday(current)) {
+            current = getNextSunday(current);
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Комментарии</h2>
+      <p>Складывается ощущение что это код побывал на Facebook:</p>
+      <pre class="example-ugly" style="font-size: 0.9em">
+        <code class="language-javascript line-numbers">
+          function hashIt(data) {
+            // The hash
+            let hash = 0;
+            // Length of string
+            const length = data.length;
+            // Loop through every character in data
+            for (let i = 0; i < length; i++) {
+              // Get character code.
+              const char = data.charCodeAt(i);
+              // Make the hash
+              hash = ((hash << 5) - hash) + char;
+              // Convert to 32-bit integer
+              hash &= hash;
+            }
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Комментируйте только важную часть</h2>
+      <p>С учетом решаемой задачи, а не просто что делает эта строка кода:</p>
+      <pre class="example-good">
+        <code class="language-javascript line-numbers">
+          function hashIt(data) {
+            let hash = 0;
+            const length = data.length;
+
+            for (let i = 0; i < length; i++) {
+              const char = data.charCodeAt(i);
+              hash = ((hash << 5) - hash) + char;
+
+              // Преобразуем в 32-битное целое число
+              hash &= hash;
+            }
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Убирайте закомментированный код</h2>
+      <pre class="example-ugly">
+        <code class="language-javascript line-numbers">
+          doStuff();
+          // doOtherStuff();
+          // doSomeMoreStuff();
+          // doSoMuchStuff();
+        </code>
+      </pre>
+      <p>Для хранения истории проекта или отдельных версий реализации используйте систему контроля версий кода <a href="https://git-scm.com">git</a>:</p>
+      <pre class="example-good">
+        <code class="language-javascript line-numbers">
+          doStuff();
+        </code>
+      </pre>
+      <p>Туда же отправляйте заметки к сделанным изменениям.</p>
+    </section>
+
+    <section class="slide chapter">
+      <h2>Переменные</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Давайте переменным описательные названия</h2>
+      <p>Что хранится в переменной <code>x</code>? Можно будет понять только из контекста и то не всегда:</p>
+      <pre class="example-ugly">
+        <code class="language-javascript">
+          const x = new Date;
+        </code>
+      </pre>
+      <p>Уже лучше. В <code>date</code> дата, но какая? Иногда это может быть важно если разных переменных с датами у нас много:</p>
+      <pre class="example-weak">
+        <code class="language-javascript">
+          const date = new Date;
+        </code>
+      </pre>
+      <p>Текущая дата. Где-бы мы не встретили переменную с таким именем, сложностей никаких мы испытывать не будем:</p>
+      <pre class="example-good">
+        <code class="language-javascript">
+          const currentDate = new Date;
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Транслит в именах</h2>
+      <p>Похоже на объявление станций метро в Москве на английском языке «Некст стейшн Международная»:</p>
+      <pre class="example-ugly">
+        <code class="language-javascript">
+          const polzovatel = { name: 'Иван' };
+          const massivChisel = [ 1, 2, 3 ];
+          const cenaTovara = 5760.50;
+        </code>
+      </pre>
+      <p>Все операторы в JavaScript это реальные слова на английском языке, поэтому и переменные нужно называть на английском языке:</p>
+      <pre class="example-good">
+        <code class="language-javascript">
+          const user = { name: 'Иван' };
+          const numbersList = [ 1, 2, 3 ];
+          const itemPrice = 5760.50;
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Избегайте магических констант</h2>
+      <p>Что за число <code>86400000</code>? Почему такой таймаут? Загадкам не место в нашем коде:</p>
+      <pre class="example-ugly">
+        <code class="language-javascript line-numbers">
+          setTimeout(blastOff, 86400000);
+        </code>
+      </pre>
+      <p>Теперь код сам рассказывает о себе все подробности, а не играет в загадки:</p>
+      <pre class="example-good">
+        <code class="language-javascript line-numbers">
+          const MILLISECONDS_IN_A_DAY = 86400000;
+
+          setTimeout(blastOff, MILLISECONDS_IN_A_DAY);
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Используйте переменные чтобы сделать код понятнее</h2>
+      <p>Что мы передаеём в функцию <code>saveCityZipCode</code> первым и вторым аргументом? Зато обошлись без «лишних» переменных:</p>
+      <pre class="example-ugly" style="font-size: 0.88em">
+        <code class="language-javascript line-numbers">
+          const address = '117105, Москва, Варшавское шоссе, 1-17';
+          saveCityZipCode(address.split(', ')[1], address.split(', ')[0]);
+        </code>
+      </pre>
+      <p>Город, индекс, все на своих местах. Уверен, интерпретатор решит как оптимизировать этот код лучше меня:</p>
+      <pre class="example-good" style="font-size: 0.88em">
+        <code class="language-javascript line-numbers">
+          const address = '117105, Москва, Варшавское шоссе, 1-17';
+          const [zipCode, city] = address.split(', ');
+          saveCityZipCode(city, zipCode);
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Избегайте сокращений</h2>
+      <p>В строке <code>2</code> мы конечно легко понимаем что в переменной <code>n</code>. Но к <code>9</code> строке это понимание может улетучиться:</p>
+      <pre class="example-ugly">
+        <code class="language-javascript line-numbers">
+          const names = ['Иван', 'Мария', 'Ульяна'];
+          names.forEach(n => {
+            doStuff();
+            doSomeOtherStuff();
+            // ...
+            // ...
+            // ...
+            // ...
+            dispatch(n);
+          });
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Избегайте сокращений</h2>
+      <pre class="example-good">
+        <code class="language-javascript line-numbers">
+          const names = ['Иван', 'Мария', 'Ульяна'];
+          names.forEach(name => {
+            doStuff();
+            doSomeOtherStuff();
+            // ...
+            // ...
+            // ...
+            // ...
+            dispatch(name);
+          });
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Не пишите «масло маслянное»</h2>
+      <p>На первый взгляд все хорошо, четко и подробно. Но слово <mark>item</mark> в каждой строке, а местами и по два раза:</p>
+      <pre class="example-ugly">
+        <code class="language-javascript line-numbers">
+          const item = {
+            itemType: 'Масло',
+            itemTitle: 'Сливочное',
+            itemAmount: 7,
+            itemReserve: 0
+          };
+
+          function reserveItem(item, amount) {
+            item.itemAmount -= amount;
+            item.itemReserve += amount;
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Не пишите «масло маслянное»</h2>
+      <p>Избавимся от излишней детализации, контекст все равно сохраняется и позволяет нам читать код без пояснений и не испытывать сложностей:</p>
+      <pre class="example-good">
+        <code class="language-javascript line-numbers">
+          const item = {
+            type: 'Масло',
+            title: 'Сливочное',
+            amount: 7,
+            reserve: 0
+          };
+
+          function reserveItem(item, amount) {
+            item.amount -= amount;
+            item.reserve += amount;
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide chapter">
+      <h2>Функции</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Название функции должно говорить что она делает</h2>
+      <p>Что делаете функция <code>getNext</code>? Очевидно что она сдвигает дату на один месяц вперед? Нет:</p>
+      <pre class="example-weak">
+        <code class="language-javascript line-numbers">
+          function getNext(date) {}
+
+          const date = getNext(new Date);
+        </code>
+      </pre>
+      <p>А теперь?</p>
+      <pre class="example-good">
+        <code class="language-javascript line-numbers">
+          function getNextMonth(date) {}
+
+          const date = getNextMonth(new Date);
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Связывайте название функции и аргументы</h2>
+      <p>Мне кажется название функции вводит нас в заблуждение:</p>
+      <pre class="example-ugly">
+        <code class="language-javascript line-numbers">
+          function saveCityZipCode(zipCode, city) {}
+
+          saveCityZipCode(city, zipCode);
+        </code>
+      </pre>
+      <p>Нужно менять порядок либо в названии, либо в аргументах, чтобы название помогало нам:</p>
+      <pre class="example-good">
+        <code class="language-javascript line-numbers">
+          function saveCityZipCode(city, zipCode) {}
+
+          saveCityZipCode(city, zipCode);
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Значения по умолчанию вместо проверок и сокращенных вычислений</h2>
+      <pre class="example-weak" style="font-size: 0.7em">
+        <code class="language-javascript line-numbers">
+          function createMicrobrewery(title) {
+            const breweryName = title || 'Хипстерская Пивная компания';
+            // ...
+          }
+        </code>
+      </pre>
+      <p>Как минимум значение по умолчанию будет видно без анализа тела функции:</p>
+      <pre class="example-good" style="font-size: 0.7em">
+        <code class="language-javascript line-numbers">
+          function createMicrobrewery(breweryName = 'Хипстерская Пивная компания') {
+            // ...
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Два аргумента хорошо, три не очень, четыре — ужасно</h2>
+      <p>Что же делать с функцией, требующей много информации из вызывающего кода, или которая поддаётся тонкой настройке:</p>
+      <pre class="example-ugly" style="font-size: 0.7em">
+        <code class="language-javascript line-numbers">
+          function createMenuItem(title, action, shortName, hotKey, confirmable) {
+            // ...
+          }
+        </code>
+      </pre>
+      <p>Часть необязательных аргументов, а возможно и все, можно принять в виде объекта:</p>
+      <pre class="example-good" style="font-size: 0.7em">
+        <code class="language-javascript line-numbers">
+          function createMenuItem(title, action, { shortName, hotKey, confirmable }) {
+            // ...
+          }
+
+          createMenuItem('Сохранить изменения', action, {
+            shortName: 'Сохранить',
+            hotKey: 'Ctrl+S',
+            confirmable: false
+          })
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Одна задача — одна функция</h2>
+      <p>Если функция делает больше чем одну задачу, она становится менее универсальной. Эта функция считает площадь и выводит её:</p>
+      <pre class="example-ugly">
+        <code class="language-javascript line-numbers">
+          function getBoxSurfaceArea(x, y, z) {
+            const area = 2 * (x * y + x * z + y * z);
+            console.log(`Пладь поверхности: ${area}`);
+            return area;
+          }
+          getBoxSurfaceArea(1, 2, 3);
+        </code>
+      </pre>
+      <p>Оставим только одно:</p>
+      <pre class="example-good">
+        <code class="language-javascript line-numbers">
+          function getBoxSurfaceArea(x, y, z) {
+            return 2 * (x * y + x * z + y * z);
+          }
+          const area = getBoxSurfaceArea(1, 2, 3);
+          console.log(`Пладь поверхности: ${area}`);
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Выносите низкоуровневые детали в отдельные функции</h2>
+      <p>Что нам мешает понять что и как делает функция <code>extractRandomItem</code>?</p>
+      <pre class="example-weak">
+        <code class="language-javascript line-numbers">
+          function extractRandomItem(list) {
+            const index = Math.floor(Math.random() * list.length);
+            return list.splice(index, i);
+          }
+
+          const names = ['Иван', 'Олег', 'Илья'];
+          const name = extractRandomItem(names);
+        </code>
+      </pre>
+      <p>Непонятные манипуляции во второй строке!</p>
+    </section>
+
+    <section class="slide">
+      <h2>Выносите низкоуровневые детали в отдельные функции</h2>
+      <p>Теперь любой легко поймет что делает функция <code>extractRandomItem</code> и даже понять как она это делает:</p>
+      <pre class="example-good">
+        <code class="language-javascript line-numbers">
+          function getRandomInt(from, to) {
+            const diff = from - to + 1;
+            return Math.floor(Math.random() * diff) + from;
+          }
+          function extractRandomItem(list) {
+            const index = getRandomInt(0, list.length - 1);
+            return list.splice(index, i);
+          }
+
+          const names = ['Иван', 'Олег', 'Илья'];
+          const name = extractRandomItem(names);
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Сложные условия заслуживают отдельной функции</h2>
+      <pre class="example-weak">
+        <code class="language-javascript line-numbers">
+          if (fsm.state === 'fetching' && isEmpty(listNode)) {
+            // ...
+          }
+        </code>
+      </pre>
+      <p>Условия имеют свойства рости в процессе, теперь нас это не беспокоит:</p>
+      <pre class="example-good">
+        <code class="language-javascript line-numbers">
+          function shouldShowSpinner(fsm, listNode) {
+            return fsm.state === 'fetching' && isEmpty(listNode);
+          }
+
+          if (shouldShowSpinner(fsm, listNode)) {
+            // ...
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Флаги в аргументах указывают на многозадачность функции</h2>
+      <pre class="example-weak">
+        <code class="language-javascript line-numbers">
+          function createFile(name, temp) {
+            if (temp) {
+              fs.create(`./temp/${name}`);
+            } else {
+              fs.create(name);
+            }
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Флаги в аргументах указывают на многозадачность функции</h2>
+      <pre class="example-good">
+        <code class="language-javascript line-numbers">
+          function createFile(name) {
+            fs.create(name);
+          }
+
+          function createTempFile(name) {
+            createFile(`./temp/${name}`);
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Избегайте побочных эффектов</h2>
+      <p>Если на то нет причин: возвращайте результат, а не присваивайте его в переменную замыкания:</p>
+      <pre class="example-ugly">
+        <code class="language-javascript line-numbers">
+          let name = 'Олег Петров';
+
+          function splitName() {
+            name = name.split(' ');
+          }
+
+          splitName();
+
+          console.log(name);
+          // [Олег, Петров];
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Избегайте побочных эффектов</h2>
+      <p>Тогда функцию <code>splitIntoFirstAndLastName</code> можно будет повторно использовать без опасений:</p>
+      <pre class="example-good">
+        <code class="language-javascript line-numbers">
+          let name = 'Олег Петров';
+
+          function splitName(name) {
+            return name.split(' ');
+          }
+
+          const [firstName, lastName] = splitName(name);
+
+          console.log(firstName); // Олег
+          console.log(lastName); // Петров
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Используйте возможности массивов</h2>
+      <pre class="example-weak">
+        <code class="language-javascript line-numbers">
+          const programmerOutput = [
+            { name: 'Uncle Bobby', linesOfCode: 500 },
+            { name: 'Suzie Q', linesOfCode: 1500 },
+            { name: 'Jimmy Gosling', linesOfCode: 150 },
+            { name: 'Gracie Hopper', linesOfCode: 1000 }
+          ];
+
+          let totalOutput = 0;
+
+          for (let i = 0; i < programmerOutput.length; i++) {
+            totalOutput += programmerOutput[i].linesOfCode;
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Используйте возможности массивов</h2>
+      <pre class="example-good">
+        <code class="language-javascript line-numbers">
+          const programmerOutput = [
+            { name: 'Uncle Bobby', linesOfCode: 500 },
+            { name: 'Suzie Q', linesOfCode: 1500 },
+            { name: 'Jimmy Gosling', linesOfCode: 150 },
+            { name: 'Gracie Hopper', linesOfCode: 1000 }
+          ];
+
+          const INITIAL_VALUE = 0;
+
+          const totalOutput = programmerOutput
+            .map(programmer => programmer.linesOfCode)
+            .reduce((total, linesOfCode) => {
+              return total + linesOfCode;
+            }, INITIAL_VALUE);
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide chapter" id="programm">
+      <h2><a href="http://netology.ru/free-lessons/dev-javascript-consultation-060317">Консультация по курсу JavaScript</a></h2>
+      <h3>6 марта</h3>
+      <style>
+        #programm {
+          background: url(/common/i/cover.svg) no-repeat center bottom / contain;
+          background-color: #5a5a91;
+        }
+
+        #programm * {
+          color: #fff;
+          font-weight: 900;
+          text-align: center;
+        }
+
+        #programm a {
+          background: none;
+        }
+
+        #programm h2:before {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        #programm h3 {
+          font-size: 64px;
+          color: #f3f3f3;
+        }
+      </style>
+    </section>
+
+    <section class="slide last">
+      <p class="thanx">Задавайте вопросы и приходите на консультацию 6 марта!</p>
+      <address>Дима Фитискин</address>
+      <ul class="contacts">
+        <li><a href="mailto:dfitiskin@gmail.ru"><i class="fa fa-envelope-o" aria-hidden="true"></i>dfitiskin@gmail.ru</a></li>
+        <li><a href="skype:dfitiskin?call"><i class="fa fa-skype" aria-hidden="true"></i>dfitiskin</a></li>
+        <li><a href="https://fb.me/dfitiskin"><i class="fa fa-facebook" aria-hidden="true"></i>fb.me/dfitiskin</a></li>
+      </ul>
+    </section>
+
+
+
+    <div class="progress"></div>
+    <script src="/node_modules/shower-core/shower.min.js"></script>
+    <script src="/common/js/prism.js?v=2"></script>
+    <script src="https://use.fontawesome.com/30b5a52164.js"></script>
+  </body>
+</html>

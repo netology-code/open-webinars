@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>Используем callback API сообществ ВКонтакте</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/node_modules/shower-ribbon/styles/screen-4x3.css">
+    <link rel="stylesheet" href="/common/css/prism.css">
+    <link rel="stylesheet" href="/common/css/prism-fix.css">
+    <link rel="stylesheet" href="/common/css/netology.css">
+  </head>
+  <body class="shower">
+    <header class="caption">
+      <h1>Используем callback API сообществ ВКонтакте</h1>
+      <p>Дима Фитискин, Нетология</p>
+    </header>
+
+    <section class="slide" id="cover">
+      <h2>Используем callback API сообществ ВКонтакте</h2>
+      <p>
+        <img src="/common/pic/authors/dfitiskin.jpg" alt="" class="avatar">
+        Дима Фитискин <span class="position">Нетология</span>
+      </p>
+    </section>
+
+    <section class="slide author" id="author">
+      <img src="/common/pic/authors/dfitiskin.jpg" alt="">
+      <h1>Дима Фитискин</h1>
+      <p class="position">Руковожу курсами по программированию в Нетологии</p>
+      <ul class="contacts">
+        <li><a href="mailto:dfitiskin@gmail.ru"><i class="fa fa-envelope-o" aria-hidden="true"></i>dfitiskin@gmail.ru</a></li>
+        <li><a href="skype:dfitiskin?call"><i class="fa fa-skype" aria-hidden="true"></i>dfitiskin</a></li>
+        <li><a href="https://fb.me/dfitiskin"><i class="fa fa-facebook" aria-hidden="true"></i>fb.me/dfitiskin</a></li>
+      </ul>
+    </section>
+
+    <section class="slide chapter" id="programm">
+      <h2><a href="http://netology.ru/programs/php-sql">PHP/SQL: back-end разработка и базы данных</a></h2>
+      <h3>3 марта</h3>
+      <style>
+        #programm {
+          background: url(/common/i/cover.svg) no-repeat center bottom / contain;
+          background-color: #5a5a91;
+        }
+
+        #programm * {
+          color: #fff;
+          font-weight: 900;
+          text-align: center;
+        }
+
+        #programm a {
+          background: none;
+        }
+
+        #programm h2:before {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        #programm h3 {
+          font-size: 64px;
+          color: #f3f3f3;
+        }
+      </style>
+    </section>
+
+    <section class="slide">
+      <h2>План занятия</h2>
+      <ol>
+        <li>Знакомство — <em>5 минут</em></li>
+        <li>Введение для начинающих — <em>20 минут</em></li>
+        <li>Принцип работы Callback API — <em>10 минут</em></li>
+        <li>Уведомления о событиях группы ВКонтакте — <em>40 минут</em></li>
+        <li>Ответы на вопросы — <em>20 минут</em></li>
+      </ol>
+    </section>
+
+    <section class="slide chapter">
+      <h2>Знакомство</h2>
+    </section>
+
+    <section class="slide chapter">
+      <h2>Введение для начинающих</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Можно ли стать программистом?</h2>
+      <p>Вопрос ничем не отличается от «Можно ли стать поваром», «врачем», «ведущим сабаководом» или «жанглером».</p>
+      <ul>
+        <li><mark>Можно!</mark></li>
+        <li>Все кто уже является программистом подтверждают эту теорию.</li>
+        <li>Программист — это не призвание, просто область деятельности, одна из множества других.</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Что нужно чтобы стать программистом?</h2>
+      <p>Базовые компоненты, без которых ничего не получится:</p>
+      <ul>
+        <li><mark>Желание</mark></li>
+        <li>Время</li>
+        <li>Мотивация</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Что поможет стать программистом?</h2>
+      <p>Дополнительные, которые сильно все упростят:</p>
+      <ul>
+        <li>Образовательный маршрут от вашего текущего уровня знаний до той цели, которую вы хотите получить.</li>
+        <li>Интересные практические задачи соответствующие текущему уровняю знаний для отработки навых навыков.</li>
+        <li>Наставник, который всегда будет рядом и поможет обойти острые углы и не растерять мотивацию.</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Как может выгядеть процесс становления программистом</h2>
+      <ol>
+        <li>Изучить <a href="http://netology.ru/programs/html-css-base">основы HTML и CSS</a> — это еще не программирование. Но уже очень близко. Тренеруемся на кошках.</li>
+        <li>Выбрать язык программирования, который хотите изучать. Об этом далее.</li>
+        <li>Изучить основы, закрепляя каждый аспект решением задач с его использованием. Чем больше задач, тем лучше. Чем ближе они к реальности тем еще лучше.</li>
+        <li>Научиться мыслить алгоритмами. На самом деле вы и так это делаете.</li>
+        <li>Когда вы освоили базу — помогайте новичкам. Это лучший способ закрепить и стуктурировать полученные знания и опыт.</li>
+        <li>Ищите проекты в которых можно поучаствовать или хотя бы рядом постоять.</li>
+      </ol>
+    </section>
+
+    <section class="slide">
+      <figure class="blockquote">
+        <img src="/common/i/code.jpg" alt="">
+        <blockquote>
+          <p>Профессиональный программист — не&nbsp;программист который владеет технологией, а&nbsp;программист которому платят. Не&nbsp;обязательно деньгами. Ищите возможность извлекать выгоду из полученных навыков как можно раньше.</p>
+        </blockquote>
+        <figcaption>Дима Фитискин :)</figcaption>
+      </figure>
+    </section>
+
+    <section class="slide">
+      <h2>Какой язык выбрать?</h2>
+      <p>На самом деле это не очень важный выбор. Выучив один язык вы легко потом освоите другой.</p>
+      <p>Скорее нужно выбирать область в которой вы планируете работать.</p>
+    </section>
+
+    <section class="slide">
+      <h2>А какие областям бывают?</h2>
+      <ul>
+        <li><mark>Предоставление доступа к данным и сбор данных</mark></li>
+        <li>Игры</li>
+        <li>Обработка графики и видео</li>
+        <li>Обработка больших объемов данных</li>
+        <li>Шифрование и защита информации</li>
+        <li>Научные расчеты</li>
+        <li>Производство</li>
+        <li>Управление механизмами</li>
+        <li>Управление процессами</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>А еще бывают разные платформы</h2>
+      <p>В каждой из областей может быть несколько платформ, на которых можно решать задачи, и каждая комбинация области и поатформы — это целый отдельный мир:</p>
+      <ul>
+        <li><mark>Веб-разработка</mark> — программа где-то на сервере, мы к ней обращаемся через браузер.</li>
+        <li>Мобильная разработка — программа выполняется на мобильном устройстве.</li>
+        <li>Десктоп разработка — программа выполняется на компьютере или ноутбуке.</li>
+        <li>Прикладная разработка — программа выполняется внутри некоторой закрытой системы.</li>
+        <li>Программирование микроконтроллеров — программа выполняется в маленьком чипе, который находится в сердце большего устройства.</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Веб-разработка</h2>
+      <p>Пользователь и система разделены сетью интернет. Можно тоже разделить на две ключевые части:</p>
+      <ul>
+        <li>Front-end — часть системы, которая видна пользователю, и с которой он может взаимодействовать.</li>
+        <li>Back-end — часть системы, к возможностям которой можно получить доступ только взаимодействую с front-end частью.</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Front-end и Back-end</h2>
+      <img class="cover" src="./pic/fe-vs-be.jpg" alt="Front-end vs Back-end">
+    </section>
+
+    <section class="slide">
+      <h2>Front-end</h2>
+      <p>Какие технологии используются во front-end части системы:</p>
+      <ul>
+        <li>Браузеры и их возможности</li>
+        <li>HTML — язык разметки документа</li>
+        <li>CSS — язык описания внешнего вида элементов документа</li>
+        <li>Графика в форматах PNG, JPG, GIF, WEBP, SVG и других — просто картинки</li>
+        <li>JavaScript — язык программирования, который позволяет задействовать возможности браузера и изменять документ, стили оформления, обрабатывать действия пользователя.</li>
+        <li>Плагины браузера — различные компоненты, которые пользователь должен установить отдельно.</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Back-end</h2>
+      <p>Какие технологии используются в back-end части системы:</p>
+      <ul>
+        <li>Веб-сервер — единственная обязательная часть для back-end</li>
+        <li>Язык программирования на котором описана логика обработки запросов на веб-сервере, или на котором реализован сам веб-сервер.</li>
+        <li>Система управления базами данных — может использоваться языком программирования для получения и хранения данных.</li>
+        <li>Все что угодно, что может потребоваться для решения задач клиента.</li>
+      </ul>
+      <p>Если на front-end стэк технологий четко определен, то на back-end возможны варианты.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Языки программирования для back-end</h2>
+      <p>Языки для реализации серверной логики в порядке обывания популярности:</p>
+      <ul>
+        <li>PHP</li>
+        <li>JavaScript (Node.js)</li>
+        <li>Ruby</li>
+        <li>Python</li>
+        <li>Go/Java/C# и другие</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Какой язык выбрать?</h2>
+      <p>Если подходить к выбору серьезно то вот что нужно брать в расчет:</p>
+      <ul>
+        <li>Простота — чем проще технология, тем меньше времени уйдет на освоение.</li>
+        <li>Востребованность — если знания технологии никому не требуются, то наверное учить её имеет смысл только чтобы потом легче было учить другую более востребованную.</li>
+        <li>Уровень входа — технология может быть востребованной, но ищут например только специалистов с хорошим опытом.</li>
+        <li>Перспективы — стабильные и ростущие технологии в приоритете.</li>
+        <li>Деньги — самый субъективный фактор.</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Как бы я сравнивал</h2>
+      <p><mark>Внимание!</mark> В вашем случае таблица может выглядеть иначе.</p>
+      <table class="striped">
+        <thead>
+          <tr>
+            <th>Критерий</th>
+            <th>PHP</th>
+            <th>Ruby</th>
+            <th>Python</th>
+            <th>JavaScript</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Простота</td>
+            <td>9</td>
+            <td>8</td>
+            <td>7</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>Востребованность</td>
+            <td>10</td>
+            <td>6</td>
+            <td>4</td>
+            <td>9</td>
+          </tr>
+          <tr>
+            <td>Уровень входа</td>
+            <td>10</td>
+            <td>5</td>
+            <td>6</td>
+            <td>9</td>
+          </tr>
+          <tr>
+            <td>Перспективы</td>
+            <td>7</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>Деньги</td>
+            <td>5</td>
+            <td>10</td>
+            <td>10</td>
+            <td>7</td>
+          </tr>
+          <tr>
+            <td>Итог</td>
+            <td>41</td>
+            <td>39</td>
+            <td>37</td>
+            <td>40</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Но есть и нюансы. Например, <mark>JavaScript</mark> — самый популярный <strong>второй</strong> язык, которым владеют веб-разработчики. Все кто владеют PHP и Ruby, скорее всего знают JavaScript.</p>
+    </section>
+
+    <section class="slide chapter">
+      <h2>Принцип работы Callback API</h2>
+    </section>
+
+    <section class="slide">
+      <h2></h2>
+    </section>
+
+    <section class="slide chapter">
+      <h2>Уведомления о событиях группы ВКонтакте</h2>
+    </section>
+
+    <section class="slide chapter" id="programm">
+      <h2><a href="http://netology.ru/free-lessons/dev-php-consultation-270217">Консультация по курсу PHP/SQL</a></h2>
+      <h3>27 февраля</h3>
+      <style>
+        #programm {
+          background: url(/common/i/cover.svg) no-repeat center bottom / contain;
+          background-color: #5a5a91;
+        }
+
+        #programm * {
+          color: #fff;
+          font-weight: 900;
+          text-align: center;
+        }
+
+        #programm a {
+          background: none;
+        }
+
+        #programm h2:before {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        #programm h3 {
+          font-size: 64px;
+          color: #f3f3f3;
+        }
+      </style>
+    </section>
+
+    <section class="slide last">
+      <p class="thanx">Задавайте вопросы и записывайтесь на консультацию!</p>
+      <address>Консультация 27 февраля!</address>
+      <ul class="contacts">
+        <li><a href="mailto:dfitiskin@gmail.ru"><i class="fa fa-envelope-o" aria-hidden="true"></i>dfitiskin@gmail.ru</a></li>
+        <li><a href="skype:dfitiskin?call"><i class="fa fa-skype" aria-hidden="true"></i>dfitiskin</a></li>
+        <li><a href="https://fb.me/dfitiskin"><i class="fa fa-facebook" aria-hidden="true"></i>fb.me/dfitiskin</a></li>
+      </ul>
+    </section>
+
+
+    <div class="progress"></div>
+    <script src="/node_modules/shower-core/shower.min.js"></script>
+    <script src="/common/js/prism.js?v=2"></script>
+    <script src="https://use.fontawesome.com/30b5a52164.js"></script>
+  </body>
+</html>
