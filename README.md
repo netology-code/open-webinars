@@ -12,7 +12,7 @@
 
 Клонируйте репозиторий и установите зависимости:
 ```bash
-git clone git@bitbucket.org:netology-university/open-webinars.git
+git clone git@github.com:netology-code/open-webinars.git
 cd open-webinars
 npm install
 ```
@@ -40,6 +40,6 @@ npm start
 
 Все материалы занятия, кроме исходного кода, который пишется в рамках занятия, помещаем в папку занятия. Исходный код должен быть опубликован на [GitHub Нетологии](https://github.com/netology-code) и ссылка на репозиторий должна быть в слайдах.
 
-Думаю не стоит отдельно упоминать, что материалы должны быть хорошо отформатированы и соблюдать [гайды Нетологии](https://netology-university.bitbucket.io/codestyle/).
+Думаю не стоит отдельно упоминать, что материалы должны быть хорошо отформатированы и соблюдать [гайды Нетологии](hhttps://github.com/netology-code/codestyle).
 
 Добавьте ссылку на материалы в файл `index.html`
