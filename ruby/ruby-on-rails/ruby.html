@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <title>Возможности Ruby и Ruby on Rails</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/node_modules/shower-ribbon/styles/screen-4x3.css">
+  <link rel="stylesheet" href="/common/css/prism.css">
+  <link rel="stylesheet" href="/common/css/prism-fix.css">
+  <link rel="stylesheet" href="/common/css/netology.css">
+  <link rel="stylesheet" href="/common/css/fake-browser.css">
+  <link rel="stylesheet" href="/common/css/ruby.css">
+  <link rel="shortcut icon" href="/common/i/favicon.ico" type="image/x-icon">
+</head>
+<body class="shower list">
+  <header class="caption">
+    <h1>Возможности Ruby и Ruby on Rails</h1>
+    <p>Сергей Алексеенко, Servers.com</p>
+  </header>
+
+  <section class="slide" id="cover">
+    <h2>Возможности Ruby и Ruby on Rails</h2>
+    <p>
+      <img src="pic/salekseenko.jpeg" alt="" class="avatar">
+      Сергей Алексеенко <span class="position">Servers.com</span>
+    </p>
+  </section>
+  <section class="slide author" id="author">
+    <img src="pic/salekseenko.jpeg" alt="">
+    <h1>Сергей Алексеенко</h1>
+    <p class="position">Backend Developer в Servers.com</p>
+  </section>
+
+  <section class="slide">
+    <h2>Что такое Ruby и Rails?</h2>
+    <p><b>Ruby</b> - динамический язык программирования, чтобы делать программистов счастливыми.</p>
+    <p>Автор - <i>Юкихира Мацумото</i></p><br><br>
+    <p><b>Ruby on Rails</b> - фреймворк (программный каркас) для профессиональной разработки web-приложений.</p>
+    <p>Автор - <i>Давид Хейнемейер Ханссон</i></p>
+  </section>
+
+  <section class="slide">
+    <h2>Несколько фактов о Ruby</h2>
+    <ul>
+      <li>Динамический язык. Динамические типы. Никакой компиляции;</li>
+      <li>Язык сверхвысокого уровня;</li>
+      <li>Воспитывает правильное отношение к программированию: Test Driven Development (TDD), Don’t Repeat Yourself (DRY);</li>
+      <li>Большое и отзывчивое сообщество;</li>
+      <li>Развитое метапрограммирование, идеален для создания DSL;</li>
+      <li>Подходит для освоения с нуля;</li>
+      <li>Более <b>142,385</b> готовых библиотек (gems) для разных задач.</li>
+    </ul>
+  </section>
+  
+  <section class="slide">
+    <h2>А что же с Rails?</h2>
+    <ul>
+      <li>Идеально для построения web приложений любой сложности;</li>
+      <li>Любимец стартапов. Увеличивает скорость разработки на 30-40%;</li>
+      <li>Из коробки работает со всеми современными базами данных;</li>
+      <li>Основан на парадигме Model-View-Controller;</li>
+      <li>Принцип “convention over configuration”;</li>
+      <li>Используется в больших компаниях: Basecamp, Airbnb, Shopify, Github, Twitter, Hulu, Dribble, Groupon;</li>
+      <li>Прост в масштабировании</li>
+      <li>Удобный deploy: любимый capistrano используют и на Python и на PHP!</li>
+    </ul> 
+  </section>
+
+  <section class="slide">
+    <h2>PHP</h2>
+    <pre><code class="language-php line-numbers">
+      function read_data($source)
+      {
+          if (method_exists($source, 'read')) {
+              return $source->read();
+          } elseif (is_string($source)) {
+              $file = new SplFileObject($source, "r"));
+              return $file->fread($file->getSize());
+          }
+          throw new InvalidArgumentException;
+      }
+      
+      $filename = "foo.txt";
+      read_data($filename); #=> считывает содержимое foo.txt 
+                            # с помощью вызова SplFileObject->read();
+      
+      $input = new SplFileObject("foo.txt", "r");
+      read_data($input); #=> считывает содержимое foo.txt  
+                 # с помощью передачи в дескриптор файла 
+    </code></pre>
+  </section>
+
+  <section class="slide">
+    <h2>Ruby</h2>
+    <pre><code class="language-ruby line-numbers">
+      def read_data(source)
+        return source.read if source.respond_to?(:read)
+        return File.read(source.to_str) if source.respond_to?(:to_str)
+        raise ArgumentError
+      end
+      
+      filename = "foo.txt"
+      read_data(filename) #=> считывает содержимое foo.txt 
+            # с помощью вызова File.read() 
+      
+      input = File.open("foo.txt")
+      read_data(input) #=> считывает содержимое foo.txt 
+            # с помощью передачи в дескриптор файла
+    </code></pre>
+  </section>
+
+
+  <section class="slide">
+    <h2>Что нас ждет?</h2>
+    <ul>
+      <li>Немного чистого Ruby: базовый синтаксис, объекты и методы. Разработаем простой “умный дом”;</li>
+      <li>Погрузимся в Ruby on Rails и разработаем собственную онлайн площадку по поиску вакансий;</li>
+      <li>Научимся проектировать базы данных, работать с запросами, регистрировать/авторизовывать пользователей, создавать удобный веб-интерфейс. Все - что нужно для современного web-приложения;</li>
+      <li>Запустим свой проект в production!</li>
+    </ul>
+  </section>
+    
+  <section class="slide last">
+    <p class="thanx">Заполните, пожалуйста, опрос по открытому занятию <a href="https://goo.gl/forms/eczjbuvZD0RJIgBF2">https://goo.gl/forms/eczjbuvZD0RJIgBF2</a></p>
+  </section>
+  <div class="progress"></div>
+  <script src="/node_modules/shower-core/shower.min.js"></script>
+  <script src="/common/js/prism.js?v=2"></script>
+  <script src="/common/js/prism-ruby.js"></script>
+  <script src="https://use.fontawesome.com/30b5a52164.js"></script>
+</body>
+</html>
